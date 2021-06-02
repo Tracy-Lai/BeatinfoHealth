@@ -1,0 +1,22 @@
+@import 'src/styles/colors';
+
+:host {
+  display: block;
+  background-color: $gray100;
+  min-height: 100%;
+  color: $white;
+  padding: 1.25rem 2.1875rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  margin-top: 1.5rem;
+  color: $gray30;
+
+  span {
+    margin-left: 0.75rem;
+  }
+}

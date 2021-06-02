@@ -1,0 +1,16 @@
+@import 'src/styles/colors';
+
+:host {
+  display: flex;
+}
+
+.serviceName {
+  font-size: 0.75rem;
+  margin-left: 0.625rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.subName {
+  color: $gray40;
+}

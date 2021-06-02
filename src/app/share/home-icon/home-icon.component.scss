@@ -1,0 +1,15 @@
+@import 'src/styles/colors';
+
+:host {
+  display: inline-block;
+
+  path {
+    fill: $gray50;
+  }
+
+  &.white {
+    path {
+      fill: $white;
+    }
+  }
+}

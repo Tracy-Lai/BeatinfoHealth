@@ -1,0 +1,119 @@
+@import './colors';
+
+table{
+  width: 100%;
+}
+
+svg {
+  display: block;
+}
+
+a {
+  color: $white;
+
+  &:active {
+    color: $white;
+  }
+}
+
+.fullField {
+  width: 100%;
+}
+
+.listContainer {
+  border-radius: 12px;
+  background-color: $gray90;
+  overflow: hidden;
+
+  header {
+    display: flex;
+    padding: 0.75rem 1.125rem;
+    align-items: center;
+
+    h1 {
+      font-size: 1.125rem;
+      margin-right: 3.75rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+      color: $gray50;
+
+      & + span {
+        margin-left: 1.625rem;
+      }
+    }
+  }
+}
+
+.functionBlock {
+  margin-left: auto;
+}
+
+.icon {
+  vertical-align: bottom;
+
+  & + & {
+    margin-left: 0.625rem;
+  }
+}
+
+.button-icon {
+  cursor: pointer;
+  background-color: $gray80;
+  border-radius: 6px;
+  padding: 0.375rem;
+}
+
+.white-background-icon {
+  cursor: pointer;
+  background-color: $white;
+  border-radius: 6px;
+  padding: 0.375rem;
+  margin-right: 0.75rem;
+}
+
+.inactive-icon {
+  cursor: not-allowed;
+
+  svg {
+    pointer-events: none;
+  }
+}
+
+.small-icon {
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.agm-info-window-content {
+  color: $gray100;
+}
+
+.menuContainer {
+  border: 1px solid;
+  padding: 0.25rem;
+  
+  .mat-menu-item {
+    background: $blue50;
+    border-radius: 4px;
+
+    & + .mat-menu-item {
+      margin-top: 0.5rem;
+    }
+
+    &:hover:not([disabled]) {
+      background: $blue60;
+    }
+  }
+}
+
+.nameColumn {
+  min-width: 6rem;
+}
+
+.contractColumn {
+  display: flex;
+}
