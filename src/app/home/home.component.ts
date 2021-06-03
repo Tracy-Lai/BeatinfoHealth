@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  // 初始化
   ngOnInit(): void {
   }
 

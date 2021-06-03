@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// import { Routing } from 'src/app/models/routing.enum';
+import { Routing } from 'src/app/models/routing.enum';
 
 import { HomeComponent } from './home.component';
 
@@ -15,11 +15,11 @@ const routes: Routes = [
       //   loadChildren: () =>
       //     import('../teams/teams.module').then((m) => m.TeamsModule),
       // },
-      // {
-      //   path: Routing.User,
-      //   loadChildren: () =>
-      //     import('../users/users.module').then((m) => m.UsersModule),
-      // },
+      {
+        path: Routing.User,
+        loadChildren: () =>
+          import('../users/users.module').then((m) => m.UsersModule),
+      },
       // {
       //   path: Routing.Setting,
       //   loadChildren: () =>

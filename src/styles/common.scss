@@ -1,6 +1,6 @@
 @import './colors';
 
-table{
+table {
   width: 100%;
 }
 
@@ -16,13 +16,15 @@ a {
   }
 }
 
-.fullField {
-  width: 100%;
-}
+// .fullField {
+//   width: 100%;
+// }
 
 .listContainer {
+  margin: 20px 20px;
+  padding: 20px 30px;
   border-radius: 12px;
-  background-color: $gray90;
+  background-color: $white;
   overflow: hidden;
 
   header {
@@ -46,9 +48,9 @@ a {
   }
 }
 
-.functionBlock {
-  margin-left: auto;
-}
+// .functionBlock {
+//   margin-left: auto;
+// }
 
 .icon {
   vertical-align: bottom;
@@ -58,62 +60,62 @@ a {
   }
 }
 
-.button-icon {
-  cursor: pointer;
-  background-color: $gray80;
-  border-radius: 6px;
-  padding: 0.375rem;
-}
+// .button-icon {
+//   cursor: pointer;
+//   background-color: $gray80;
+//   border-radius: 6px;
+//   padding: 0.375rem;
+// }
 
-.white-background-icon {
-  cursor: pointer;
-  background-color: $white;
-  border-radius: 6px;
-  padding: 0.375rem;
-  margin-right: 0.75rem;
-}
+// .white-background-icon {
+//   cursor: pointer;
+//   background-color: $white;
+//   border-radius: 6px;
+//   padding: 0.375rem;
+//   margin-right: 0.75rem;
+// }
 
-.inactive-icon {
-  cursor: not-allowed;
+// .inactive-icon {
+//   cursor: not-allowed;
 
-  svg {
-    pointer-events: none;
-  }
-}
+//   svg {
+//     pointer-events: none;
+//   }
+// }
 
-.small-icon {
-  svg {
-    width: 1rem;
-    height: 1rem;
-  }
-}
+// .small-icon {
+//   svg {
+//     width: 1rem;
+//     height: 1rem;
+//   }
+// }
 
-.agm-info-window-content {
-  color: $gray100;
-}
+// .agm-info-window-content {
+//   color: $gray100;
+// }
 
-.menuContainer {
-  border: 1px solid;
-  padding: 0.25rem;
-  
-  .mat-menu-item {
-    background: $blue50;
-    border-radius: 4px;
+// .menuContainer {
+//   border: 1px solid;
+//   padding: 0.25rem;
 
-    & + .mat-menu-item {
-      margin-top: 0.5rem;
-    }
+//   .mat-menu-item {
+//     background: $blue50;
+//     border-radius: 4px;
 
-    &:hover:not([disabled]) {
-      background: $blue60;
-    }
-  }
-}
+//     & + .mat-menu-item {
+//       margin-top: 0.5rem;
+//     }
 
-.nameColumn {
-  min-width: 6rem;
-}
+//     &:hover:not([disabled]) {
+//       background: $blue60;
+//     }
+//   }
+// }
 
-.contractColumn {
-  display: flex;
-}
+// .nameColumn {
+//   min-width: 6rem;
+// }
+
+// .contractColumn {
+//   display: flex;
+// }

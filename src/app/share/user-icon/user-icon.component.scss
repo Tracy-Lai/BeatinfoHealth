@@ -7,8 +7,16 @@
     fill: $gray70;
   }
 
+  circle[fill] {
+    fill: $gray70;
+  }
+
   &.white {
     path {
+      fill: $white;
+    }
+
+    circle[fill] {
       fill: $white;
     }
   }
