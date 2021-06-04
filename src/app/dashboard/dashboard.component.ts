@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-// Bread
+// Breadcrumb
 import { BreadcrumbService } from '../services/breadcrumb.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // Bread
+    // Breadcrumb
     this.breadService.changeBreadcrumb([]);
   }
 

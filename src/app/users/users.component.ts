@@ -7,7 +7,7 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 
 // model
 import { User } from '../models/user';
-// Bread
+// Breadcrumb
 import { BreadcrumbService } from '../services/breadcrumb.service';
 import { Routing } from '../models/routing.enum';
 // 模擬資料
@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    // Bread User
+    // Breadcrumb - User
     this.breadService.changeBreadcrumb([Routing.User]);
 
     // users
