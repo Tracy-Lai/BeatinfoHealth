@@ -4,13 +4,20 @@
   <!-- header -->
   <header>
     <h1>用戶列表</h1>
-    <span>100 用戶</span>
+    <span>{{paginator.length}} 用戶</span>
+    <div class="search">
+      <!-- 搜尋 -->
+      <mat-form-field>
+        <mat-label>關鍵字</mat-label>
+        <input matInput placeholder="關鍵字" [ngModel]="filter$ | async" (ngModelChange)="filter$.next($event)">
+      </mat-form-field>
+    </div>
   </header>
 
   <!-- table -->
-  <table mat-table [dataSource]="dataSource">
-
-    <!-- column - checkbox -->
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- column -->
+    <!-- checkbox -->
     <ng-container matColumnDef="select">
       <!-- 全選 -->
       <th mat-header-cell *matHeaderCellDef class="select">
@@ -21,32 +28,32 @@
       </td>
     </ng-container>
 
-    <!-- column - icons -->
+    <!-- icons -->
     <ng-container matColumnDef="icons">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let user" class="icons">
       </td>
     </ng-container>
 
-    <!-- column - Name -->
+    <!-- 名稱 Name -->
     <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>名稱</th>
       <td mat-cell *matCellDef="let user">
         {{ user.Name }}
       </td>
     </ng-container>
 
-    <!-- column - Phone -->
+    <!-- 電話 Phone -->
     <ng-container matColumnDef="Phone">
-      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <th mat-header-cell *matHeaderCellDef>電話</th>
       <td mat-cell *matCellDef="let user">
         {{ user.Phone }}
       </td>
     </ng-container>
 
-    <!-- column - Mail -->
+    <!-- 信箱 Mail -->
     <ng-container matColumnDef="Mail">
-      <th mat-header-cell *matHeaderCellDef>Mail</th>
+      <th mat-header-cell *matHeaderCellDef>信箱</th>
       <td mat-cell *matCellDef="let user">
         {{ user.Mail }}
       </td>
@@ -56,4 +63,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+
+  <!-- pagination -->
+  <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons>
+  </mat-paginator>
 </div>
