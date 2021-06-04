@@ -1,0 +1,36 @@
+@import 'src/styles/colors';
+
+:host {
+  display: block;
+  padding: 1.5rem 0.625rem 1.25rem;
+}
+
+ul {
+  margin-left: 20px;
+  list-style : none;
+  display    : flex;
+}
+
+li {
+  pointer-events: none;
+  text-transform: capitalize;
+
+  &:not(:last-of-type) {
+    pointer-events: initial;
+
+    a {
+      color          : $blue50;
+      text-decoration: underline;
+    }
+  }
+
+  &+& {
+    margin-left: 0.75rem;
+
+    &::before {
+      content     : '/';
+      display     : inline-block;
+      margin-right: 0.75rem;
+    }
+  }
+}

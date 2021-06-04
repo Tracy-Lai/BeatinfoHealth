@@ -5,11 +5,13 @@ import { HomeComponent } from './home.component';
 
 import { ShareModule } from 'src/app/share/share.module';
 import { HeaderComponent } from './header/header.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     HeaderComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     HomeRoutingModule,

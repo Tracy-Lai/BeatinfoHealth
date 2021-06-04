@@ -25,13 +25,13 @@ const routes: Routes = [
       //   loadChildren: () =>
       //     import('../setting/setting.module').then((m) => m.SettingModule),
       // },
-      // {
-      //   path: '',
-      //   loadChildren: () =>
-      //     import('../dashboard/dashboard.module').then(
-      //       (m) => m.DashboardModule
-      //     ),
-      // },
+      {
+        path: '',
+        loadChildren: () =>
+          import('../dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
     ],
   },
 ];

@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let item of breadList$ | async">
+    <a [routerLink]="item.link">{{item.text}}</a>
+  </li>
+</ul>

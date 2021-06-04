@@ -11,8 +11,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private matPaginatorIntl: MatPaginatorIntl,
-  ) {
-  }
+  ) { }
 
   // 初始化
   ngOnInit(): void {
