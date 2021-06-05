@@ -7,6 +7,7 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 
 // model
 import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 // Breadcrumb
 import { BreadcrumbService } from '../services/breadcrumb.service';
 import { Routing } from '../models/routing.enum';
@@ -26,8 +27,18 @@ export class UsersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
+  // TODO:: 取得 user 列表
+  fetchUserList() {
+    console.log('fetchUserList');
+    this.userService.fetchUserList().subscribe(p => {
+      // this.dataSource.data = p;
+      this.dataSource.data = Users;
+    });
+  }
+
   constructor(
-    private breadService: BreadcrumbService
+    private userService: UserService,
+    private breadService: BreadcrumbService,
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +46,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.breadService.changeBreadcrumb([Routing.User]);
 
     // users
-    this.dataSource.data = Users;
+    this.fetchUserList();
+
     // filter
     this.filter$.pipe(
       debounceTime(300)

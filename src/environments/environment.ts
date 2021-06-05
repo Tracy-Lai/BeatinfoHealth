@@ -16,7 +16,7 @@ export const environment = {
   //   measurementId: "G-5SVD9B6EWE"
   // },
   // mapKey: 'AIzaSyBcu2buVHX0XDjZuDOaQIi1KdOG_jPDANI',
-  // apiUri: 'https://mountain.beatinfo.biz',
+  apiUri: 'https://mountain.beatinfo.biz',
 };
 
 /*

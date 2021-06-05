@@ -7,6 +7,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AuthInterceptor } from './services/auth.interceptor';
+
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -20,6 +22,7 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

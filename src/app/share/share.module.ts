@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatSortModule } from '@angular/material/sort';
-import { MatDialogModule } from '@angular/material/dialog';
+// material
 import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 
@@ -19,6 +21,7 @@ import { UserIconComponent } from './user-icon/user-icon.component';
 import { IconActiveDirective } from './directives/icon-active.directive';
 
 import { HeaderLogoComponent } from './header-logo/header-logo.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,11 @@ import { HeaderLogoComponent } from './header-logo/header-logo.component';
     HomeIconComponent,
     UserIconComponent,
     IconActiveDirective,
-    HeaderLogoComponent
+    HeaderLogoComponent,
+    SpinnerComponent,
   ],
   imports: [
+    CommonModule,
   ],
   exports: [
     // icons
@@ -36,20 +41,23 @@ import { HeaderLogoComponent } from './header-logo/header-logo.component';
     HomeIconComponent,
     UserIconComponent,
     IconActiveDirective,
+    //
+    SpinnerComponent,
     // modules
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     // material module
-    MatTableModule,
-    MatPaginatorModule,
-    MatCheckboxModule,
-    MatSortModule,
-    MatDialogModule,
     MatButtonModule,
-    MatInputModule,
-    MatSelectModule,
+    MatCheckboxModule,
     MatDatepickerModule,
+    MatDialogModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSortModule,
+    MatTableModule,
     MatNativeDateModule,
     MatMenuModule,
     // pipe
