@@ -34,6 +34,11 @@ const routes: Routes = [
       },
     ],
   },
+  // otherwise redirect to home
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
@@ -41,4 +46,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 
-export class HomeRoutingModule {}
+export class HomeRoutingModule { }

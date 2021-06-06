@@ -9,8 +9,7 @@ import { AppComponent } from './app.component';
 
 import { AuthInterceptor } from './_helpers/auth.interceptor';
 
-import { environment } from 'src/environments/environment';
-import { LoginComponent } from './login/login.component';
+// import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
