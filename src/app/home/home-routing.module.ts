@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Routing } from 'src/app/models/routing.enum';
+import { Routing } from 'src/app/_models/routing.enum';
 
 import { HomeComponent } from './home.component';
 

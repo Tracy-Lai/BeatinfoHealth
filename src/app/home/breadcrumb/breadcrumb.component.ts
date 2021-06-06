@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { BreadcrumbService } from 'src/app/services/breadcrumb.service';
+import { BreadcrumbService } from 'src/app/_services/breadcrumb.service';
 
 @Component({
   selector: 'app-breadcrumb',

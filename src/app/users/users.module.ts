@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { UsersRoutingModule } from './users-routing.module';
 
-import { ShareModule } from 'src/app/share/share.module';
+import { ShareModule } from 'src/app/_share/share.module';
 import { UsersComponent } from './users.component';
 
 @NgModule({

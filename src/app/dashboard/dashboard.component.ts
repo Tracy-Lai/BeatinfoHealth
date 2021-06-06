@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 // Breadcrumb
-import { BreadcrumbService } from '../services/breadcrumb.service';
+import { BreadcrumbService } from '../_services/breadcrumb.service';
 
 @Component({
   selector: 'app-dashboard',

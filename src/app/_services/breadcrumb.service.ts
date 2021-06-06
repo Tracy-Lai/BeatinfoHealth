@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { Routing } from '../models/routing.enum';
+import { Routing } from '../_models/routing.enum';
 
 @Injectable({
   providedIn: 'root'

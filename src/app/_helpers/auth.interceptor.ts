@@ -1,5 +1,5 @@
 import { finalize, tap } from 'rxjs/operators';
-import { SpinnerService } from './../share/spinner/spinner.service';
+import { SpinnerService } from '../_share/spinner/spinner.service';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,

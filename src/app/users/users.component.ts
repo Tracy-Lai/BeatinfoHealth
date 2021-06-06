@@ -6,13 +6,13 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 
 // model
-import { User } from '../models/user';
-import { UserService } from '../services/user.service';
+import { User } from '../_models/user';
+import { UserService } from '../_services/user.service';
 // Breadcrumb
-import { BreadcrumbService } from '../services/breadcrumb.service';
-import { Routing } from '../models/routing.enum';
+import { BreadcrumbService } from '../_services/breadcrumb.service';
+import { Routing } from '../_models/routing.enum';
 // 模擬資料
-import { Users } from '../services/mock/users';
+import { Users } from '../_services/mock/users';
 
 @Component({
   selector: 'app-users',
@@ -29,7 +29,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   // TODO:: 取得 user 列表
   fetchUserList() {
-    console.log('fetchUserList');
     this.userService.fetchUserList().subscribe(p => {
       // this.dataSource.data = p;
       this.dataSource.data = Users;

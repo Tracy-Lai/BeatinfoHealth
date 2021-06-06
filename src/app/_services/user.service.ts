@@ -4,7 +4,7 @@ import { from } from 'rxjs';
 import { concatMap, map, mergeMap, toArray } from 'rxjs/operators';
 // import { differenceInMinutes, parseISO } from 'date-fns';
 
-import { User } from '../models/user';
+import { User } from '../_models/user';
 
 @Injectable({
   providedIn: 'root'
