@@ -5,16 +5,15 @@
 export const environment = {
   production: false,
   // TODO: 更新
-  // firebase: {
-  //   apiKey: "AIzaSyDDiY8zSsRI6t4od1lxzxRUOtWJ981kyaA",
-  //   authDomain: "edb20-clouded-leopard-monitor.firebaseapp.com",
-  //   databaseURL: "https://edb20-clouded-leopard-monitor.firebaseio.com",
-  //   projectId: "edb20-clouded-leopard-monitor",
-  //   storageBucket: "edb20-clouded-leopard-monitor.appspot.com",
-  //   messagingSenderId: "569198942658",
-  //   appId: "1:569198942658:web:64d73788f138e4b57b1e5b",
-  //   measurementId: "G-5SVD9B6EWE"
-  // },
+  firebase: {
+    apiKey: "AIzaSyA-Yk0y7XU23xnjhIk1T6cQU0avYPQv9V4",
+    authDomain: "beatinfo-health.firebaseapp.com",
+    projectId: "beatinfo-health",
+    storageBucket: "beatinfo-health.appspot.com",
+    messagingSenderId: "1025746078915",
+    appId: "1:1025746078915:web:d754707987399a7144e676",
+    measurementId: "G-6VQZP221RX"
+  },
   // mapKey: 'AIzaSyBcu2buVHX0XDjZuDOaQIi1KdOG_jPDANI',
   apiUri: 'https://mountain.beatinfo.biz',
 };

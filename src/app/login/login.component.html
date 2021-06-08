@@ -1,21 +1,4 @@
 <div class="form">
-  <form action="#">
-    <h1>LOGO</h1>
-    <div class="input-group">
-      <input type="email" name="email" class="input email" autocomplete="off">
-      <label>E-Mail</label>
-    </div>
-    <div class="input-group">
-      <input type="password" name="password" class="input password">
-      <label>Password</label>
-    </div>
-    <div class="input-group">
-      <button type="button">
-        LOGIN
-      </button>
-    </div>
-    <div class="forgot">
-      <a href="#">Forgot Password?</a>
-    </div>
-  </form>
+  <h1>LOGO</h1>
+  <firebase-ui (signInSuccessWithAuthResult)="successCallback($event)" (signInFailure)="errorCallback($event)"></firebase-ui>
 </div>
