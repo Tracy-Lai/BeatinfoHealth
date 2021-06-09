@@ -1,18 +1,19 @@
 html,
 body {
-  height: 100%;
+  height: 100vh;
 }
 
 body {
-  margin: 0;
+  display    : block;
+  margin     : 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 p {
-  margin-block-start: 0;
-  margin-block-end: 0;
+  margin-block-start : 0;
+  margin-block-end   : 0;
   margin-inline-start: 0;
-  margin-inline-end: 0;
+  margin-inline-end  : 0;
 }
 
 a {
@@ -25,22 +26,112 @@ h3,
 h4,
 h5,
 h6 {
-  margin-block-start: 0;
-  margin-block-end: 0;
+  margin-block-start : 0;
+  margin-block-end   : 0;
   margin-inline-start: 0;
-  margin-inline-end: 0;
+  margin-inline-end  : 0;
 }
 
 ul {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
+  margin-block-start  : 0;
+  margin-block-end    : 0;
+  margin-inline-start : 0;
+  margin-inline-end   : 0;
   padding-inline-start: 0;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.ml-0 {
+  margin-left: 0 !important;
+}
+
+.mr-0 {
+  margin-right: 0 !important;
+}
+
+.mx-0 {
+  margin-left : 0 !important;
+  margin-right: 0 !important;
+}
+
+.my-0 {
+  margin-top   : 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.m-1 {
+  margin: 0.25rem !important;
+}
+
+.mt-1 {
+  margin-top: 0.25rem !important;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem !important;
+}
+
+.ml-1 {
+  margin-left: 0.25rem !important;
+}
+
+.mr-1 {
+  margin-right: 0.25rem !important;
+}
+
+.mx-1 {
+  margin-left : 0.25rem !important;
+  margin-right: 0.25rem !important;
+}
+
+.my-1 {
+  margin-top   : 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.m-2 {
+  margin: 0.5rem !important;
+}
+
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+.ml-2 {
+  margin-left: 0.5rem !important;
+}
+
+.mr-2 {
+  margin-right: 0.5rem !important;
+}
+
+.mx-2 {
+  margin-left : 0.5rem !important;
+  margin-right: 0.5rem !important;
+}
+
+.my-2 {
+  margin-top   : 0.5rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 @import '~firebaseui/dist/firebaseui.css';

@@ -1,7 +1,65 @@
-<app-header></app-header>
-<app-breadcrumb></app-breadcrumb>
-<router-outlet></router-outlet>
+<!-- Header -->
+<mat-toolbar>
+
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <app-menu-icon class="white" *ngIf="!sidenav.opened"></app-menu-icon>
+    <app-close-icon class="white" *ngIf="sidenav.opened"></app-close-icon>
+  </button>
+
+  <app-header-logo></app-header-logo>
+
+  <span class="spacer"></span>
+
+  <!-- TODO:: 使用者資訊 & 組織切換 -->
+  <!-- <div class="userInfoBlock mr-2">
+    <span class="name">User Name</span>
+  </div>
+
+  <mat-form-field>
+    <mat-label>選擇組織</mat-label>
+    <mat-select [(ngModel)]="filterOrgId">
+      <mat-option [value]="undefined">-</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+</mat-toolbar>
+
+<!-- Container -->
+<mat-sidenav-container>
+  <!-- SideNav -->
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+    <a mat-button routerLink="/">
+      <app-home-icon></app-home-icon>
+      <span>主頁</span>
+    </a>
+    <!--
+    <button mat-button class="menu-button">
+    </button> -->
+
+    <a mat-button routerLink="/">
+      <app-home-icon></app-home-icon>
+      <span>組織管理</span>
+    </a>
+    <!-- <mat-divider></mat-divider> -->
+  </mat-sidenav>
+
+  <!-- Content -->
+  <mat-sidenav-content>
+    <!-- breadcrumb -->
+    <app-breadcrumb></app-breadcrumb>
+    <!-- Card content -->
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <span>© 2021 Singular Wings  -  All rights reserved</span>
+    </footer>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- spinner -->
 <app-spinner></app-spinner>
-<footer>
-  <span>© 2021 Singular Wings  -  All rights reserved</span>
-</footer>

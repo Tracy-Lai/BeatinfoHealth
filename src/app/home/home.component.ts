@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginatorIntl, MatPaginatorDefaultOptions } from '@angular/material/paginator';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,14 @@ import { MatPaginatorIntl, MatPaginatorDefaultOptions } from '@angular/material/
 })
 export class HomeComponent implements OnInit {
 
+  filterOrgId: number | undefined;
+
+  @ViewChild(MatSidenav)
+  sidenav!: MatSidenav;
+
   constructor(
     private matPaginatorIntl: MatPaginatorIntl,
+    private observer: BreakpointObserver,
   ) { }
 
   // 初始化
@@ -35,4 +43,16 @@ export class HomeComponent implements OnInit {
     };
   }
 
+  ngAfterViewInit(): void {
+    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+      console.log(res)
+      if (res.matches) {
+        this.sidenav.mode = 'over';
+        this.sidenav.close();
+      } else {
+        this.sidenav.mode = 'side';
+        this.sidenav.open();
+      }
+    });
+  }
 }

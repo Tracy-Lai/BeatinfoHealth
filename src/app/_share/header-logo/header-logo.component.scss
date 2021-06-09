@@ -1,13 +1,18 @@
 @import 'src/styles/colors';
 
 :host {
-  display: flex;
+  align-items: center;
+  display    : flex;
+}
+
+span {
+  line-height: 20px;
 }
 
 .serviceName {
-  font-size: 0.75rem;
-  margin-left: 0.625rem;
-  display: flex;
+  font-size     : 0.75rem;
+  margin-left   : 0.625rem;
+  display       : flex;
   flex-direction: column;
 }
 

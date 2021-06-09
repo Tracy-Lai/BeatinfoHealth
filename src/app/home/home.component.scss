@@ -1,20 +1,66 @@
 @import 'src/styles/colors';
 
 :host {
-  display: block;
-  background-color: $gray20;
-  min-height: 100%;
-  // color: $white;
-  padding: 0rem 0rem;
+  display      : block;
+  height       : 100vh;
+}
+
+mat-toolbar {
+  background: $gray90;
+  color     : $white;
+  font-size : 16px;
+  // flex-wrap: wrap;
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
+
+.mat-icon-button svg {
+  vertical-align: middle;
+}
+
+mat-sidenav {
+  margin       : 16px;
+  width        : 200px;
+  border-right : none;
+  background   : $gray70;
+  color        : white;
+  border-radius: 10px;
+  padding      : 16px;
+
+  .mat-button {
+    width     : 100%;
+    text-align: left;
+
+    &:hover {
+      background: $gray60;
+    }
+  }
+
+  span {
+    padding-left: 10px;
+  }
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+
+  .content {
+    height       : calc(100vh - 165px);
+    border-radius: 10px;
+    margin       : 16px;
+    margin-left  : 32px;
+  }
 }
 
 footer {
-  display: flex;
+  display        : flex;
   justify-content: center;
-  align-items: center;
-  font-size: 0.75rem;
-  margin-top: 1.5rem;
-  color: $gray80;
+  align-items    : center;
+  font-size      : 0.75rem;
+  margin-top     : 10px;
+  color          : $gray80;
 
   span {
     margin-left: 0.75rem;

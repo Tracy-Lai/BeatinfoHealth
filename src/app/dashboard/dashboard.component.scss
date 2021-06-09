@@ -1,0 +1,54 @@
+@import 'src/styles/colors';
+
+:host {
+  display      : block;
+}
+
+.app {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  flex-direction : column;
+
+  .wrapper {
+    display  : flex;
+    min-width: 200px;
+    max-width: 800px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    background   : $gray10;
+    box-shadow   : rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    min-width    : 200px;
+    margin       : 45px 30px;
+    border-radius: 2px;
+    transition   : .15s all ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    a {
+      text-decoration: none;
+      padding        : 12px;
+      // color          : #03A9F4;
+      font-size      : 24px;
+      display        : flex;
+      flex-direction : column;
+      align-items    : center;
+
+      img,
+      svg {
+        height: 100px;
+        width: 100px;
+      }
+
+      span {
+        padding-top: 20px;
+        font-size: 20px;
+      }
+    }
+  }
+}

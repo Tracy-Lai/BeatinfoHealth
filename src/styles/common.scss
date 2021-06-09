@@ -23,16 +23,10 @@ a {
   }
 }
 
-// .fullField {
-//   width: 100%;
-// }
-
 .listContainer {
-  margin          : 0px 20px;
-  padding         : 20px 30px;
-  border-radius   : 12px;
-  background-color: $white;
-  overflow        : hidden;
+
+  overflow: hidden;
+  padding: 20px 30px;
 
   header {
     display    : flex;
@@ -58,10 +52,6 @@ a {
     }
   }
 }
-
-// .functionBlock {
-//   margin-left: auto;
-// }
 
 .icon {
   vertical-align: bottom;
@@ -121,12 +111,4 @@ a {
 //       background: $blue60;
 //     }
 //   }
-// }
-
-// .nameColumn {
-//   min-width: 6rem;
-// }
-
-// .contractColumn {
-//   display: flex;
 // }
