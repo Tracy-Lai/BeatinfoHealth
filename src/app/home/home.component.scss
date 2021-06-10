@@ -1,18 +1,51 @@
 @import 'src/styles/colors';
 
 :host {
-  display      : block;
-  height       : 100vh;
+  display: block;
+  height : 100vh;
 }
 
 mat-toolbar {
-  background: $gray90;
-  color     : $white;
-  font-size : 16px;
-  // flex-wrap: wrap;
+  background : $gray90;
+  color      : $white;
+  font-size  : 16px;
+  height     : 128px;
+  align-items: normal;
 
-  .spacer {
-    flex: 1 1 auto;
+  &>* {
+    height     : 64px;
+    align-items: center;
+  }
+
+  .org {
+    margin-left: auto;
+  }
+
+  .r-btn {
+    margin-left    : 20px;
+    display        : flex;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 920px) {
+    .org {
+      position: absolute;
+      top     : 64px;
+      right   : 0;
+      left    : 0;
+      margin-left: 0;
+    }
+
+    app-header-logo {
+      margin-right: auto;
+    }
+  }
+
+}
+
+@media screen and (min-width: 921px) {
+  mat-toolbar {
+    height: 64px;
   }
 }
 

@@ -8,7 +8,27 @@
 
   <app-header-logo></app-header-logo>
 
-  <span class="spacer"></span>
+  <button mat-button class="org">
+    organization
+  </button>
+
+  <button class="r-btn" mat-button [matMenuTriggerFor]="Notification">
+    Notification
+  </button>
+  <mat-menu #Notification="matMenu" xPosition="before">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <button class="r-btn" mat-button [matMenuTriggerFor]="Profile">
+    Profile
+  </button>
+  <mat-menu #Profile="matMenu" xPosition="before">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+
+  <!-- <span class="spacer"></span> -->
 
   <!-- TODO:: 使用者資訊 & 組織切換 -->
   <!-- <div class="userInfoBlock mr-2">
@@ -55,7 +75,7 @@
 
     <!-- footer -->
     <footer>
-      <span>© 2021 Singular Wings  -  All rights reserved</span>
+      <span>© 2021 Singular Wings - All rights reserved</span>
     </footer>
 
   </mat-sidenav-content>
