@@ -20,11 +20,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 
 // icon
+import { AccountCircleIconComponent } from './account-circle-icon/account-circle-icon.component';
 import { LogoIconComponent } from './logo-icon/logo-icon.component';
 import { HomeIconComponent } from './home-icon/home-icon.component';
 import { UserIconComponent } from './user-icon/user-icon.component';
 import { CloseIconComponent } from './close-icon/close-icon.component';
 import { MenuIconComponent } from './menu-icon/menu-icon.component';
+import { NotificationIconComponent } from './notification-icon/notification-icon.component';
 import { IconActiveDirective } from './directives/icon-active.directive';
 
 import { HeaderLogoComponent } from './header-logo/header-logo.component';
@@ -36,11 +38,13 @@ import { ManagementIconComponent } from './management-icon/management-icon.compo
 
 @NgModule({
   declarations: [
+    AccountCircleIconComponent,
     LogoIconComponent,
     HomeIconComponent,
     UserIconComponent,
     CloseIconComponent,
     MenuIconComponent,
+    NotificationIconComponent,
     IconActiveDirective,
     HeaderLogoComponent,
     SpinnerComponent,
@@ -52,11 +56,13 @@ import { ManagementIconComponent } from './management-icon/management-icon.compo
   ],
   exports: [
     // icons
+    AccountCircleIconComponent,
     LogoIconComponent,
     HomeIconComponent,
     UserIconComponent,
     CloseIconComponent,
     MenuIconComponent,
+    NotificationIconComponent,
     IconActiveDirective,
     HeartIconComponent,
     ManagementIconComponent,

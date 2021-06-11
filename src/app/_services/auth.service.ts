@@ -7,7 +7,6 @@ import { of } from 'rxjs';
 
 import { User } from '../_models/user';
 
-const TOKEN_NAME = 'token';
 const uid_NAME = 'uid';
 
 @Injectable({
@@ -23,16 +22,8 @@ export class AuthService {
     private fireAuth: AngularFireAuth,
   ) { }
 
-  setToken(token: string) {
-    localStorage.setItem(TOKEN_NAME, token);
-  }
-
   setUID(uid: string) {
     localStorage.setItem(uid_NAME, uid);
-  }
-
-  getToken() {
-    return localStorage.getItem(TOKEN_NAME);
   }
 
   getUID() {
@@ -40,13 +31,11 @@ export class AuthService {
   }
 
   // 登入
-  login(uid: string, redirect = true) {
-    return this.http.post<any>('/User/Login', {
-      UUID: uid,
-      FromWebSite: 1,
+  login(uid: string, token: string, redirect = true) {
+    return this.http.post<any>('/Login', {
+      IdToken: token,
     }).pipe(
-      tap(({ Authority }) => {
-        // this.permissionList = Authority;
+      tap(() => {
         this.setUID(uid);
       }),
       catchError(p => {
@@ -66,7 +55,20 @@ export class AuthService {
 
   // 判斷是否登入
   hasLogin() {
-    return true;
     return !!this.getUID();
+  }
+
+  // TODO::重新取得 token
+  refreshToken() {
+    this.http.get<any>('/Refresh').pipe(
+      catchError(p => {
+        this.logout();
+        return of(true);
+      }),
+    ).subscribe(res => {
+      console.log(res)
+      localStorage.setItem('access_token', res.Data.access_token);
+      localStorage.setItem('refresh_token', res.Data.refresh_token);
+    });
   }
 }

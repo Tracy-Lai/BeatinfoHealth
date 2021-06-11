@@ -15,7 +15,7 @@ export const environment = {
     measurementId: "G-6VQZP221RX"
   },
   // mapKey: 'AIzaSyBcu2buVHX0XDjZuDOaQIi1KdOG_jPDANI',
-  apiUri: 'https://mountain.beatinfo.biz',
+  apiUri: 'https://health.beatinfo.biz',
 };
 
 /*

@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UsersComponent } from './users.component';
+// model
+import { Routing } from 'src/app/_models/routing.enum';
+// component
+import { OrginazationsComponent } from './orginazations.component';
 
 const routes: Routes = [
   // { path: 'detail/:id', component: DetailComponent },
-  { path: '', component: UsersComponent },
+  {
+    path: '',
+    component: OrginazationsComponent,
+  },
 ];
 
 @NgModule({
@@ -13,4 +19,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 
-export class UsersRoutingModule { }
+export class OrginazationsRoutingModule { }

@@ -21,18 +21,14 @@ export class LoginComponent implements OnInit {
   successCallback(signInSuccessData: FirebaseUISignInSuccessWithAuthResult) {
     var user = signInSuccessData.authResult.user;
     if (user) {
-
+      var uid = user.uid;
       user.getIdToken().then(token => {
-        this.loginService.setToken(token);
+        this.loginService.login(uid, token).subscribe(res => {
+          localStorage.setItem('access_token', res.Data.access_token);
+          localStorage.setItem('refresh_token', res.Data.refresh_token);
+          this.router.navigate(['/orginazation']);
+        });
       });
-
-      this.router.navigate(['/']);
-      /*
-      TODO:: wait for login api
-      this.loginService.login(user.uid).subscribe(p => {
-        this.router.navigate(['/']);
-      });
-      */
     }
   }
 

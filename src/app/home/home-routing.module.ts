@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+// guard
+import { OrginazationGuard } from './../_helpers/orginazation.guard';
+// model
 import { Routing } from 'src/app/_models/routing.enum';
-
+// component
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
@@ -10,35 +12,27 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-      // {
-      //   path: Routing.Team,
-      //   loadChildren: () =>
-      //     import('../teams/teams.module').then((m) => m.TeamsModule),
-      // },
       {
-        path: Routing.User,
-        loadChildren: () =>
-          import('../users/users.module').then((m) => m.UsersModule),
+        path: Routing.Orginazation,
+        loadChildren: () => import('../orginazations/orginazations.module').then((m) => m.OrginazationsModule),
       },
-      // {
-      //   path: Routing.Setting,
-      //   loadChildren: () =>
-      //     import('../setting/setting.module').then((m) => m.SettingModule),
-      // },
       {
         path: '',
-        loadChildren: () =>
-          import('../dashboard/dashboard.module').then(
-            (m) => m.DashboardModule
-          ),
+        loadChildren: () => import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
+        canActivate: [OrginazationGuard],
+      },
+      {
+        path: Routing.User,
+        loadChildren: () => import('../users/users.module').then((m) => m.UsersModule),
+        canActivate: [OrginazationGuard],
       },
     ],
   },
-  // otherwise redirect to home
+  // otherwise redirect to Orginazation
   {
     path: '**',
-    redirectTo: ''
-  }
+    redirectTo: Routing.Orginazation
+  },
 ];
 
 @NgModule({

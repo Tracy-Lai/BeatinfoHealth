@@ -1,14 +1,14 @@
-@import '../../../styles/colors';
+@import 'src/styles/colors';
 
 :host {
   display: inline-block;
 
-  svg {
+  path {
     fill: $black;
   }
 
   &.white {
-    svg {
+    path {
       fill: $white;
     }
   }

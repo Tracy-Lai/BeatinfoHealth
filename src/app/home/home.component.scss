@@ -22,17 +22,18 @@ mat-toolbar {
   }
 
   .r-btn {
-    margin-left    : 20px;
     display        : flex;
     justify-content: center;
   }
 
   @media screen and (max-width: 920px) {
+    padding: 0 10px;
+
     .org {
-      position: absolute;
-      top     : 64px;
-      right   : 0;
-      left    : 0;
+      position   : absolute;
+      top        : 64px;
+      right      : 0;
+      left       : 0;
       margin-left: 0;
     }
 

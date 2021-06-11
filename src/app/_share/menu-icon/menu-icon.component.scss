@@ -1,7 +1,7 @@
 @import '../../../styles/colors';
 
 :host {
-  display: block;
+  display: inline-block;
 
   svg {
     fill: $black;

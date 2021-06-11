@@ -27,6 +27,11 @@ export class UsersComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
+  constructor(
+    private userService: UserService,
+    private breadService: BreadcrumbService,
+  ) { }
+
   // TODO:: 取得 user 列表
   fetchUserList() {
     this.userService.fetchUserList().subscribe(p => {
@@ -34,11 +39,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
       this.dataSource.data = Users;
     });
   }
-
-  constructor(
-    private userService: UserService,
-    private breadService: BreadcrumbService,
-  ) { }
 
   ngOnInit(): void {
     // Breadcrumb - User

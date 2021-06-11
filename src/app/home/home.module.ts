@@ -1,3 +1,4 @@
+import { OrganizationDialogComponent } from './organization-dialog/organization-dialog.component';
 import { NgModule } from '@angular/core';
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -10,6 +11,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
   declarations: [
     HomeComponent,
     BreadcrumbComponent,
+    OrganizationDialogComponent,
   ],
   imports: [
     HomeRoutingModule,

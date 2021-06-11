@@ -22,16 +22,23 @@ export class AuthInterceptor implements HttpInterceptor {
     private spinnerService: SpinnerService,
   ) { }
 
+  token = localStorage.getItem('access_token');
+
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     this.spinnerService.requestStarted();
     const req = request.clone({
       ...request,
-      setHeaders: {Authorization: this.authService.getToken() || ''},
+      // withCredentials: true,
+      setHeaders: {Authorization: this.token || ''},
+      // setHeaders: {
+      //   'Access-Control-Allow-Origin': '*',
+      //   'Access-Control-Allow-Credentials': 'true',
+      //   'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS, PATCH',
+      //   'content-type': 'application/json',
+      // },
       url: environment.apiUri + request.url
     });
-    console.log(this.authService.getToken());
-    console.log(req);
     return next.handle(req).pipe(
       tap(
         (event) => {
@@ -40,11 +47,9 @@ export class AuthInterceptor implements HttpInterceptor {
           }
         },
         (error: HttpErrorResponse) => {
-          console.log('error HttpErrorResponse');
           this.spinnerService.resetSpinner();
         }
       ),
     );
-    // return next.handle(req);
   }
 }

@@ -1,68 +1,55 @@
 <!-- Header -->
 <mat-toolbar>
 
-  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+  <button mat-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
     <app-menu-icon class="white" *ngIf="!sidenav.opened"></app-menu-icon>
     <app-close-icon class="white" *ngIf="sidenav.opened"></app-close-icon>
   </button>
 
   <app-header-logo></app-header-logo>
 
-  <button mat-button class="org">
-    organization
+  <button mat-button class="org" (click)="openDialogOrganization()">
+    選擇組織
   </button>
 
-  <button class="r-btn" mat-button [matMenuTriggerFor]="Notification">
-    Notification
+  <!-- TODO::Notification
+    <button class="r-btn" mat-button [matMenuTriggerFor]="Notification">
+    <app-notification-icon class="white"></app-notification-icon>
   </button>
   <mat-menu #Notification="matMenu" xPosition="before">
     <button mat-menu-item>Item 1</button>
     <button mat-menu-item>Item 2</button>
-  </mat-menu>
+  </mat-menu> -->
 
   <button class="r-btn" mat-button [matMenuTriggerFor]="Profile">
-    Profile
+    <app-account-circle-icon class="white"></app-account-circle-icon>
   </button>
   <mat-menu #Profile="matMenu" xPosition="before">
     <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="clickLogout()">登出</button>
   </mat-menu>
-
-  <!-- <span class="spacer"></span> -->
-
-  <!-- TODO:: 使用者資訊 & 組織切換 -->
-  <!-- <div class="userInfoBlock mr-2">
-    <span class="name">User Name</span>
-  </div>
-
-  <mat-form-field>
-    <mat-label>選擇組織</mat-label>
-    <mat-select [(ngModel)]="filterOrgId">
-      <mat-option [value]="undefined">-</mat-option>
-    </mat-select>
-  </mat-form-field> -->
 
 </mat-toolbar>
 
 <!-- Container -->
 <mat-sidenav-container>
-  <!-- SideNav -->
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
-    <a mat-button routerLink="/">
+
+    <!-- SideNav -->
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+      <!-- <a mat-button routerLink="/">
       <app-home-icon></app-home-icon>
       <span>主頁</span>
-    </a>
-    <!--
-    <button mat-button class="menu-button">
-    </button> -->
-
-    <a mat-button routerLink="/">
-      <app-home-icon></app-home-icon>
-      <span>組織管理</span>
-    </a>
-    <!-- <mat-divider></mat-divider> -->
-  </mat-sidenav>
+    </a> -->
+      <ng-container *ngFor="let menu of menusData;">
+        <a mat-button [routerLink]="menu.Path">
+          <span>{{menu.Name}}</span>
+        </a>
+      </ng-container>
+      <!-- <mat-divider></mat-divider> -->
+    </mat-sidenav>
 
   <!-- Content -->
   <mat-sidenav-content>
