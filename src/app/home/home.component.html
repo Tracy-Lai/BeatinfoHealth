@@ -9,7 +9,7 @@
   <app-header-logo></app-header-logo>
 
   <button mat-button class="org" (click)="openDialogOrganization()">
-    選擇組織
+    {{filterOrganization$ | async}}
   </button>
 
   <!-- TODO::Notification
@@ -25,8 +25,8 @@
     <app-account-circle-icon class="white"></app-account-circle-icon>
   </button>
   <mat-menu #Profile="matMenu" xPosition="before">
-    <button mat-menu-item>Item 1</button>
-    <mat-divider></mat-divider>
+    <!-- <button mat-menu-item>Item 1</button>
+    <mat-divider></mat-divider> -->
     <button mat-menu-item (click)="clickLogout()">登出</button>
   </mat-menu>
 
@@ -36,20 +36,20 @@
 <mat-sidenav-container>
 
 
-    <!-- SideNav -->
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+  <!-- SideNav -->
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
-      <!-- <a mat-button routerLink="/">
+    <!-- <a mat-button routerLink="/">
       <app-home-icon></app-home-icon>
       <span>主頁</span>
     </a> -->
-      <ng-container *ngFor="let menu of menu$ | async">
-        <a mat-button [routerLink]="menu.Path">
-          <span>{{menu.Name}}</span>
-        </a>
-      </ng-container>
-      <!-- <mat-divider></mat-divider> -->
-    </mat-sidenav>
+    <ng-container *ngFor="let menu of menu$ | async">
+      <a mat-button [routerLink]="menu.Path">
+        <span>{{menu.Name}}</span>
+      </a>
+    </ng-container>
+    <!-- <mat-divider></mat-divider> -->
+  </mat-sidenav>
 
   <!-- Content -->
   <mat-sidenav-content>

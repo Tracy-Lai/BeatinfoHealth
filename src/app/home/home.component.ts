@@ -22,17 +22,13 @@ import { OrganizationDialogComponent } from './organization-dialog/organization-
 export class HomeComponent implements OnInit {
 
   // 選擇組織
-  filterOrganizations: Organization[] = [
-    { Id: '1', Name: '組織 1', ServiceId: '1' },
-    { Id: '2', Name: '組織 2', ServiceId: '1' },
-  ];
-  filterOrganizationId: string | null;
+  filterOrganizations: Organization[] = [];
+  filterOrganization$ = this.organizationService.filterOrganization$;
 
   // menu
   menu$ = this.menuService.menu$;
 
-  @ViewChild(MatSidenav)
-  sidenav!: MatSidenav;
+  @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
   constructor(
     private authService: AuthService,
@@ -40,10 +36,16 @@ export class HomeComponent implements OnInit {
     private organizationService: OrganizationService,
     private dialog: MatDialog,
     private matPaginatorIntl: MatPaginatorIntl,
-    private observer: BreakpointObserver,
+    private breakpointObserver: BreakpointObserver,
     private router: Router,
   ) {
-    this.filterOrganizationId = organizationService.getOrganizationId();
+  }
+
+  // 取得 組織
+  fetchOrganizationList() {
+    this.organizationService.fetchOrganization('1').subscribe(res => {
+      this.filterOrganizations = res;
+    });
   }
 
   // 組織
@@ -51,15 +53,14 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(OrganizationDialogComponent, {
       width: '450px',
       data: {
-        filterOrganizationId: this.filterOrganizationId,
+        filterOrganizationId: this.organizationService.getOrganizationId(),
         filterOrganizations: this.filterOrganizations,
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.filterOrganizationId = result;
-        this.organizationService.setOrganizationId(result);
+    dialogRef.afterClosed().subscribe(Id => {
+      if (Id) {
+        this.organizationService.setOrganizationId(Id);
         this.router.navigate(['/']);
       }
     });
@@ -72,6 +73,9 @@ export class HomeComponent implements OnInit {
 
   // 初始化
   ngOnInit(): void {
+    // 組織
+    this.fetchOrganizationList();
+    this.organizationService.changeFilterOrganization();
     // 設定分頁預設選項
     // 設定分頁顯示資訊文字
     this.matPaginatorIntl.itemsPerPageLabel = '每頁筆數：';
@@ -93,7 +97,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+    this.breakpointObserver.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
         this.sidenav.close();
