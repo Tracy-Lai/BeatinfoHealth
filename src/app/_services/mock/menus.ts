@@ -6,19 +6,27 @@ export const Menus: Menu[] = [
     Name: 'Home',
     Path: '/',
   },
+];
+
+export const MangementMenus: Menu[] = [
   // {
-  //   MenuId: 2,
-  //   Name: '使用者',
-  //   Path: '/users',
+  //   MenuId: 1,
+  //   Name: 'Home',
+  //   Path: '/',
   // },
-  // {
-  //   MenuId: 3,
-  //   Name: '管理者',
-  //   Path: '/admins',
-  // },
-  // {
-  //   MenuId: 4,
-  //   Name: '群組',
-  //   Path: '/groups',
-  // },
+  {
+    MenuId: 2,
+    Name: '使用者',
+    Path: '/management/users',
+  },
+  {
+    MenuId: 3,
+    Name: '管理者',
+    Path: '/management/admins',
+  },
+  {
+    MenuId: 4,
+    Name: '群組',
+    Path: '/management/groups',
+  },
 ];

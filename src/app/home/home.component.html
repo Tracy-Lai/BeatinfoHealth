@@ -43,7 +43,7 @@
       <app-home-icon></app-home-icon>
       <span>主頁</span>
     </a> -->
-      <ng-container *ngFor="let menu of menusData;">
+      <ng-container *ngFor="let menu of menu$ | async">
         <a mat-button [routerLink]="menu.Path">
           <span>{{menu.Name}}</span>
         </a>

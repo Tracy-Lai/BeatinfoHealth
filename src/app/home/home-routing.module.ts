@@ -13,25 +13,30 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: Routing.Orginazation,
+        path: Routing.Orginazations,
         loadChildren: () => import('../orginazations/orginazations.module').then((m) => m.OrginazationsModule),
+      },
+      {
+        path: Routing.Management,
+        loadChildren: () => import('../management/management.module').then((m) => m.ManagementModule),
+        canActivate: [OrginazationGuard],
       },
       {
         path: '',
         loadChildren: () => import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
         canActivate: [OrginazationGuard],
       },
-      {
-        path: Routing.User,
-        loadChildren: () => import('../users/users.module').then((m) => m.UsersModule),
-        canActivate: [OrginazationGuard],
-      },
+      // {
+      //   path: Routing.Users,
+      //   loadChildren: () => import('../management/users/users.module').then((m) => m.UsersModule),
+      //   canActivate: [OrginazationGuard],
+      // },
     ],
   },
   // otherwise redirect to Orginazation
   {
     path: '**',
-    redirectTo: Routing.Orginazation
+    redirectTo: Routing.Orginazations
   },
 ];
 

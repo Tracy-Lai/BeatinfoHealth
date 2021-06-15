@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from '../_services/breadcrumb.service';
 import { Routing } from '../_models/routing.enum';
 
+import { MenuService } from '../_services/menu.service';
+
 @Component({
   selector: 'app-orginazations',
   templateUrl: './orginazations.component.html',
@@ -12,12 +14,15 @@ import { Routing } from '../_models/routing.enum';
 export class OrginazationsComponent implements OnInit {
 
   constructor(
+    private menuService: MenuService,
     private breadService: BreadcrumbService,
   ) { }
 
   ngOnInit(): void {
-    // Breadcrumb - Orginazation
-    this.breadService.changeBreadcrumb([Routing.Orginazation]);
+    // menu
+    this.menuService.changeMenu('Orginazation');
+    // Breadcrumb - Orginazations
+    this.breadService.changeBreadcrumb([Routing.Orginazations]);
 
   }
 

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     if (user) {
       var uid = user.uid;
       user.getIdToken().then(token => {
-        this.loginService.login(uid, token).subscribe(res => {
+        this.loginService.login(token).subscribe(res => {
           localStorage.setItem('access_token', res.Data.access_token);
           localStorage.setItem('refresh_token', res.Data.refresh_token);
           this.router.navigate(['/orginazation']);

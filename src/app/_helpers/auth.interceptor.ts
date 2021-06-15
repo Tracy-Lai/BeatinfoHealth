@@ -1,4 +1,12 @@
-import { finalize, tap } from 'rxjs/operators';
+import {
+  finalize,
+  retryWhen,
+  take,
+  tap,
+  mergeMap,
+  catchError,
+  retry
+} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -6,9 +14,10 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpErrorResponse,
-  HttpResponse
+  HttpResponse,
+  HttpClient
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 
 import { AuthService } from './../_services/auth.service';
 import { SpinnerService } from '../_share/spinner/spinner.service';
@@ -17,20 +26,28 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  token: String | null | undefined;
+
   constructor(
+    private http: HttpClient,
     private authService: AuthService,
     private spinnerService: SpinnerService,
   ) { }
 
-  token = localStorage.getItem('access_token');
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler):
+    Observable<HttpEvent<any>> {
 
     this.spinnerService.requestStarted();
+
+    if (request.url.includes("Refresh")) {
+      this.token = localStorage.getItem('refresh_token');
+    } else {
+      this.token = localStorage.getItem('access_token');
+    }
+
     const req = request.clone({
       ...request,
-      // withCredentials: true,
-      setHeaders: {Authorization: this.token || ''},
+      setHeaders: { Authorization: 'Bearer ' + this.token || '' },
       // setHeaders: {
       //   'Access-Control-Allow-Origin': '*',
       //   'Access-Control-Allow-Credentials': 'true',
@@ -39,17 +56,59 @@ export class AuthInterceptor implements HttpInterceptor {
       // },
       url: environment.apiUri + request.url
     });
+
+    if (request.url.includes("Refresh")) {
+      return next.handle(req).pipe(
+        tap((event) => {
+          this.spinnerService.requestEnded();
+        })
+      );
+    }
+
     return next.handle(req).pipe(
       tap(
         (event) => {
           if (event instanceof HttpResponse) {
-            this.spinnerService.requestEnded();
+            if (event.body.StatusCode == 0) {
+              event.body.Data;
+            }
+            if (event.body.StatusCode == 100 || event.body.StatusCode == 101) {
+              throw new Error(event.body.StatusCode);
+            }
           }
         },
         (error: HttpErrorResponse) => {
-          this.spinnerService.resetSpinner();
         }
       ),
+      retryWhen((errors: Observable<any>) => errors.pipe(
+        mergeMap((error, index) => {
+
+          if (index === 0) {
+            return this.refreshToken();
+          }
+
+          return throwError(error);
+        }),
+        take(2),
+      )),
+      retry(1),
+      finalize(() => {
+        this.spinnerService.resetSpinner();
+      })
     );
   }
+
+  private refreshToken(): Observable<any> {
+    this.http.get<any>('/Refresh').pipe(
+      catchError(p => {
+        this.authService.logout();
+        return of(true);
+      }),
+    ).subscribe(res => {
+      localStorage.setItem('access_token', res.Data.access_token);
+      localStorage.setItem('refresh_token', res.Data.refresh_token);
+    });
+    return of("refresh token");
+  }
+
 }

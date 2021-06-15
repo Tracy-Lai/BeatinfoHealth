@@ -48,7 +48,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,  // 必須第一個 import
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

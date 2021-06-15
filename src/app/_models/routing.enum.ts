@@ -1,8 +1,10 @@
 export enum Routing {
   Home = '',
-  Orginazation = 'orginazations',
+  Orginazations = 'orginazations',
   Management = 'management',
-  User = 'users',
+  Admins = 'admins',
+  Teams = 'teams',
+  Users = 'users',
   Activity = 'activity',
 
   // UserDetail = 'user detail',

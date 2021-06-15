@@ -10,6 +10,8 @@ export class BreadcrumbService {
   private defaultBread = { text: 'Home', link: '/' };
   private _breadcrumb$ = new BehaviorSubject([this.defaultBread]);
 
+  constructor() { }
+
   get breadcrumb$() {
     return this._breadcrumb$.asObservable();
   }
@@ -18,6 +20,4 @@ export class BreadcrumbService {
     const data = list.map(p => ({ text: p, link: p }));
     this._breadcrumb$.next([this.defaultBread, ...data]);
   }
-
-  constructor() { }
 }

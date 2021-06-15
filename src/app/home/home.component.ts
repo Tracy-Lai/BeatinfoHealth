@@ -1,18 +1,19 @@
 import { Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
-
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginatorIntl, MatPaginatorDefaultOptions } from '@angular/material/paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSidenav } from '@angular/material/sidenav';
 
 // model
 import { Orginazation } from '../_models/orginazation';
 // 模擬資料
 import { Menus } from '../_services/mock/menus';
-
+// service
 import { AuthService } from './../_services/auth.service';
+import { MenuService } from './../_services/menu.service';
 import { OrginazationService } from './../_services/orginazation.service';
+// component
 import { OrganizationDialogComponent } from './organization-dialog/organization-dialog.component';
 
 @Component({
@@ -29,13 +30,15 @@ export class HomeComponent implements OnInit {
   ];
   filterOrginazationId: string | null;
 
-  menusData = Menus;
+  // menu
+  menu$ = this.menuService.menu$;
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
   constructor(
     private authService: AuthService,
+    private menuService: MenuService,
     private orginazationService: OrginazationService,
     private dialog: MatDialog,
     private matPaginatorIntl: MatPaginatorIntl,
