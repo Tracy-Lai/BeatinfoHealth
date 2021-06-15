@@ -2,18 +2,18 @@
 <mat-divider></mat-divider>
 <div mat-dialog-content>
 
-  <a routerLink="/orginazations" mat-dialog-close>查看所有組織</a>
+  <a routerLink="/organizations" mat-dialog-close>查看所有組織</a>
 
   <br>
   <br>
 
   <mat-form-field>
     <mat-label>選擇組織</mat-label>
-    <mat-select [(ngModel)]="data.filterOrginazationId">
+    <mat-select [(ngModel)]="data.filterOrganizationId">
       <!-- <mat-option [value]="1">1</mat-option>
       <mat-option [value]="2">2</mat-option> -->
-      <mat-option *ngFor="let orginazation of data.filterOrginazations" [value]="orginazation.OrginazationId">
-        {{orginazation.Name}}
+      <mat-option *ngFor="let organization of data.filterOrganizations" [value]="organization.Id">
+        {{organization.Name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -21,6 +21,6 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.filterOrginazationId" cdkFocusInitial>確定</button>
+  <button mat-button [mat-dialog-close]="data.filterOrganizationId" cdkFocusInitial>確定</button>
   <button mat-button mat-dialog-close>取消</button>
 </div>

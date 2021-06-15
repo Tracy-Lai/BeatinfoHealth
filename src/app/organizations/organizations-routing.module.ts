@@ -4,13 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 // model
 import { Routing } from 'src/app/_models/routing.enum';
 // component
-import { OrginazationsComponent } from './orginazations.component';
+import { OrganizationsComponent } from './organizations.component';
 
 const routes: Routes = [
   // { path: 'detail/:id', component: DetailComponent },
   {
     path: '',
-    component: OrginazationsComponent,
+    component: OrganizationsComponent,
   },
 ];
 
@@ -19,4 +19,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 
-export class OrginazationsRoutingModule { }
+export class OrganizationsRoutingModule { }

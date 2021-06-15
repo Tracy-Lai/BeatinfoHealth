@@ -2,11 +2,11 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // model
-import { Orginazation } from '../../_models/orginazation';
+import { Organization } from '../../_models/organization';
 
 export interface DialogData {
-  filterOrginazations: Orginazation[];
-  filterOrginazationId: number;
+  filterOrganizations: Organization[];
+  filterOrganizationId: number;
 }
 
 @Component({

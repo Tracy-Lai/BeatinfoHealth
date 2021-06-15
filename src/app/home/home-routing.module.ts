@@ -1,7 +1,8 @@
+import { OrganizationsModule } from './../organizations/organizations.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // guard
-import { OrginazationGuard } from './../_helpers/orginazation.guard';
+import { OrganizationGuard } from '../_helpers/organization.guard';
 // model
 import { Routing } from 'src/app/_models/routing.enum';
 // component
@@ -13,30 +14,30 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: Routing.Orginazations,
-        loadChildren: () => import('../orginazations/orginazations.module').then((m) => m.OrginazationsModule),
+        path: Routing.Organizations,
+        loadChildren: () => import('../organizations/organizations.module').then((m) => m.OrganizationsModule),
       },
       {
         path: Routing.Management,
         loadChildren: () => import('../management/management.module').then((m) => m.ManagementModule),
-        canActivate: [OrginazationGuard],
+        canActivate: [OrganizationGuard],
       },
       {
         path: '',
         loadChildren: () => import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
-        canActivate: [OrginazationGuard],
+        canActivate: [OrganizationGuard],
       },
       // {
       //   path: Routing.Users,
       //   loadChildren: () => import('../management/users/users.module').then((m) => m.UsersModule),
-      //   canActivate: [OrginazationGuard],
+      //   canActivate: [OrganizationGuard],
       // },
     ],
   },
-  // otherwise redirect to Orginazation
+  // otherwise redirect to Organizations
   {
     path: '**',
-    redirectTo: Routing.Orginazations
+    redirectTo: Routing.Organizations
   },
 ];
 

@@ -6,13 +6,11 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSidenav } from '@angular/material/sidenav';
 
 // model
-import { Orginazation } from '../_models/orginazation';
-// 模擬資料
-import { Menus } from '../_services/mock/menus';
+import { Organization } from '../_models/organization';
 // service
 import { AuthService } from './../_services/auth.service';
 import { MenuService } from './../_services/menu.service';
-import { OrginazationService } from './../_services/orginazation.service';
+import { OrganizationService } from '../_services/organization.service';
 // component
 import { OrganizationDialogComponent } from './organization-dialog/organization-dialog.component';
 
@@ -24,11 +22,11 @@ import { OrganizationDialogComponent } from './organization-dialog/organization-
 export class HomeComponent implements OnInit {
 
   // 選擇組織
-  filterOrginazations: Orginazation[] = [
-    { OrginazationId: '1', Name: '組織 1' },
-    { OrginazationId: '2', Name: '組織 2' },
+  filterOrganizations: Organization[] = [
+    { Id: '1', Name: '組織 1', ServiceId: '1' },
+    { Id: '2', Name: '組織 2', ServiceId: '1' },
   ];
-  filterOrginazationId: string | null;
+  filterOrganizationId: string | null;
 
   // menu
   menu$ = this.menuService.menu$;
@@ -39,13 +37,13 @@ export class HomeComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private menuService: MenuService,
-    private orginazationService: OrginazationService,
+    private organizationService: OrganizationService,
     private dialog: MatDialog,
     private matPaginatorIntl: MatPaginatorIntl,
     private observer: BreakpointObserver,
     private router: Router,
   ) {
-    this.filterOrginazationId = orginazationService.getOrginazationId();
+    this.filterOrganizationId = organizationService.getOrganizationId();
   }
 
   // 組織
@@ -53,15 +51,15 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(OrganizationDialogComponent, {
       width: '450px',
       data: {
-        filterOrginazationId: this.filterOrginazationId,
-        filterOrginazations: this.filterOrginazations,
+        filterOrganizationId: this.filterOrganizationId,
+        filterOrganizations: this.filterOrganizations,
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.filterOrginazationId = result;
-        this.orginazationService.setOrginazationId(result);
+        this.filterOrganizationId = result;
+        this.organizationService.setOrganizationId(result);
         this.router.navigate(['/']);
       }
     });

@@ -11,6 +11,8 @@ import { User } from '../_models/user';
 })
 export class UserService {
 
+  constructor(private http: HttpClient) { }
+
   // 取得所有使用者
   fetchUserAll() {
     return this.http.get<User[]>('/User/All').pipe(
@@ -26,5 +28,4 @@ export class UserService {
     return this.http.get<any>('/User/Permission/Service').pipe(retry(2));
   }
 
-  constructor(private http: HttpClient) { }
 }

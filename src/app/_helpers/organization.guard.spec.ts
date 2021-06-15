@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OrginazationGuard } from './orginazation.guard';
+import { OrganizationGuard } from './organization.guard';
 
-describe('OrginazationGuard', () => {
-  let guard: OrginazationGuard;
+describe('OrganizationGuard', () => {
+  let guard: OrganizationGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(OrginazationGuard);
+    guard = TestBed.inject(OrganizationGuard);
   });
 
   it('should be created', () => {

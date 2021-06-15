@@ -1,6 +1,6 @@
 export enum Routing {
   Home = '',
-  Orginazations = 'orginazations',
+  Organizations = 'organizations',
   Management = 'management',
   Admins = 'admins',
   Teams = 'teams',
