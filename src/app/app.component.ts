@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,13 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  // TODO::開發中先關閉
-  // @HostListener('window:beforeunload', ['$event'])
-  // onWindowClose(event: any): void {
-  //   localStorage.clear();
-  // }
+  @HostListener('window:beforeunload', ['$event'])
+  onWindowClose(event: any): void {
+    // 開發中先關閉
+    if (environment.production) {
+      localStorage.clear();
+    }
+  }
 
   constructor() {
   }

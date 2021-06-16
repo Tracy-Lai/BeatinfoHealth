@@ -5,8 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSidenav } from '@angular/material/sidenav';
 
-// model
-import { Organization } from '../_models/organization';
 // service
 import { AuthService } from './../_services/auth.service';
 import { MenuService } from './../_services/menu.service';
@@ -22,7 +20,6 @@ import { OrganizationDialogComponent } from './organization-dialog/organization-
 export class HomeComponent implements OnInit {
 
   // 選擇組織
-  filterOrganizations: Organization[] = [];
   filterOrganization$ = this.organizationService.filterOrganization$;
 
   // menu
@@ -41,20 +38,12 @@ export class HomeComponent implements OnInit {
   ) {
   }
 
-  // 取得 組織
-  fetchOrganizationList() {
-    this.organizationService.fetchOrganization('1').subscribe(res => {
-      this.filterOrganizations = res;
-    });
-  }
-
   // 組織
   openDialogOrganization() {
     const dialogRef = this.dialog.open(OrganizationDialogComponent, {
       width: '450px',
       data: {
         filterOrganizationId: this.organizationService.getOrganizationId(),
-        filterOrganizations: this.filterOrganizations,
       }
     });
 
@@ -74,7 +63,6 @@ export class HomeComponent implements OnInit {
   // 初始化
   ngOnInit(): void {
     // 組織
-    this.fetchOrganizationList();
     this.organizationService.changeFilterOrganization();
     // 設定分頁預設選項
     // 設定分頁顯示資訊文字

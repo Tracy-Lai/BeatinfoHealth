@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // material
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -21,6 +22,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 // icon
 import { AccountCircleIconComponent } from './account-circle-icon/account-circle-icon.component';
+import { AddIconComponent } from './add-icon/add-icon.component';
 import { LogoIconComponent } from './logo-icon/logo-icon.component';
 import { HomeIconComponent } from './home-icon/home-icon.component';
 import { UserIconComponent } from './user-icon/user-icon.component';
@@ -39,6 +41,7 @@ import { ManagementIconComponent } from './management-icon/management-icon.compo
 @NgModule({
   declarations: [
     AccountCircleIconComponent,
+    AddIconComponent,
     LogoIconComponent,
     HomeIconComponent,
     UserIconComponent,
@@ -57,6 +60,7 @@ import { ManagementIconComponent } from './management-icon/management-icon.compo
   exports: [
     // icons
     AccountCircleIconComponent,
+    AddIconComponent,
     LogoIconComponent,
     HomeIconComponent,
     UserIconComponent,
@@ -74,6 +78,7 @@ import { ManagementIconComponent } from './management-icon/management-icon.compo
     ReactiveFormsModule,
     // material module
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatDialogModule,

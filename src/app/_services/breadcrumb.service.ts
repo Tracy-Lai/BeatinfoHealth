@@ -16,8 +16,12 @@ export class BreadcrumbService {
     return this._breadcrumb$.asObservable();
   }
 
-  changeBreadcrumb(list: Routing[]) {
+  changeBreadcrumb(list: Routing[], homeBread: boolean = true) {
     const data = list.map(p => ({ text: p, link: p }));
-    this._breadcrumb$.next([this.defaultBread, ...data]);
+    if (homeBread) {
+      this._breadcrumb$.next([this.defaultBread, ...data]);
+    } else {
+      this._breadcrumb$.next([...data]);
+    }
   }
 }

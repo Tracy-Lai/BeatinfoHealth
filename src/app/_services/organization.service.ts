@@ -55,6 +55,7 @@ export class OrganizationService {
     }).pipe(
       retry(2),
       map((data: any) => {
+        // TODO:: 移除假資料
         data.Data = [{ Id: '1', Name: '組織 1', ServiceId: '1' }, { Id: '2', Name: '組織 2', ServiceId: '1' }];
         return data.Data;
       }),

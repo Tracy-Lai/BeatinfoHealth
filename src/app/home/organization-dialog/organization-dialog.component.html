@@ -12,7 +12,7 @@
     <mat-select [(ngModel)]="data.filterOrganizationId">
       <!-- <mat-option [value]="1">1</mat-option>
       <mat-option [value]="2">2</mat-option> -->
-      <mat-option *ngFor="let organization of data.filterOrganizations" [value]="organization.Id">
+      <mat-option *ngFor="let organization of filterOrganizations" [value]="organization.Id">
         {{organization.Name}}
       </mat-option>
     </mat-select>

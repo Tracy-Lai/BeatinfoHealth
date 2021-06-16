@@ -1,1 +1,26 @@
-<p>organizations works!</p>
+<div class="new-organization">
+  <button mat-stroked-button color="primary" class="new-organization-button">
+    新增組織
+  </button>
+</div>
+<div class="app">
+  <div class="wrapper">
+    <ng-container *ngFor="let organization of organizations">
+      <a (click)="chooseOrganization(organization.Id)" routerLink="/">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>
+              {{organization.Name}}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="!organizations">
+        無組織
+    </ng-container>
+  </div>
+</div>
