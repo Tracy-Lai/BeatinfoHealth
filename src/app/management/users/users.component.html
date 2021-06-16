@@ -1,37 +1,48 @@
 <!-- container -->
 <div class="listContainer">
 
-  <!-- header -->
-  <header>
-    <h1>用戶列表</h1>
-    <span>{{paginator.length}} 用戶</span>
-    <div class="search">
-      <!-- 搜尋 -->
+  <div class="row">
+    <div class="col-12">
+      <h3>使用者列表</h3>
+    </div>
+  </div>
+
+  <!-- 搜尋 -->
+  <div class="row mt-2">
+    <div class="col-12">
       <mat-form-field>
         <mat-label>關鍵字</mat-label>
         <input matInput placeholder="關鍵字" [ngModel]="filter$ | async" (ngModelChange)="filter$.next($event)">
       </mat-form-field>
     </div>
-  </header>
+  </div>
 
+  <div class="form-row mb-2">
+    <div class="col">
+      <small>
+        共 {{paginator.length}} 項
+        <ng-container *ngIf="selection.selected.length > 0">
+          ( 已勾選 {{selection.selected.length}} 項 )
+        </ng-container>
+      </small>
+    </div>
+  </div>
   <!-- table -->
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort>
-      <!-- column -->
+
       <!-- checkbox -->
       <ng-container matColumnDef="select">
+        <!-- 全選 -->
         <th mat-header-cell *matHeaderCellDef>
-          <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
-                        [aria-label]="checkboxLabel()">
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
           </mat-checkbox>
         </th>
+        <!-- 單選 -->
         <td mat-cell *matCellDef="let row">
-          <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
+          <mat-checkbox (click)="$event.stopPropagation();" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
           </mat-checkbox>
         </td>
       </ng-container>
@@ -69,11 +80,12 @@
 
       <!-- row -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{highlighted: selection.isSelected(row)}">
+      </tr>
     </table>
   </div>
   <!-- pagination -->
-  <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons>
+  <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons (page)="handlePage($event)">
   </mat-paginator>
 
 </div>

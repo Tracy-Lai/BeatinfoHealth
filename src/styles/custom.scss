@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import './colors';
 
 @include mat-core();
 // $custom-primary: mat-palette($mat-light-blue);
@@ -11,3 +12,31 @@ $custom-warn   : mat-palette($mat-brown);
 $custom-theme  : mat-light-theme($custom-primary, $custom-accent, $custom-warn);
 
 @include angular-material-theme($custom-theme);
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-table,
+.mat-paginator {
+  background      : transparent !important;
+  background-color: transparent !important;
+}
+
+.mat-table {
+
+  .mat-header-row {
+    background-color: $gray10;
+  }
+
+  .mat-row {
+
+    &.highlighted {
+      background: $gray20;
+    }
+
+    &:hover {
+      background-color: $gray20;
+    }
+  }
+}

@@ -69,11 +69,20 @@ export class AuthInterceptor implements HttpInterceptor {
       tap(
         (event) => {
           if (event instanceof HttpResponse) {
-            if (event.body.StatusCode == 0) {
-              event.body.Data;
-            }
-            if (event.body.StatusCode == 100 || event.body.StatusCode == 101) {
+
+            const StatusCode = event.body.StatusCode;
+
+            if (StatusCode == 0) {
+
+              // event.body.Data;
+
+            } else if (event.body.StatusCode == 100) {
+
               throw new Error(event.body.StatusCode);
+
+            } else if (event.body.StatusCode == 101) {
+
+              this.authService.logout();
             }
           }
         },

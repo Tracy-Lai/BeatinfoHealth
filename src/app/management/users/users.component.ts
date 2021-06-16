@@ -35,29 +35,36 @@ export class UsersComponent implements OnInit, AfterViewInit {
     private breadService: BreadcrumbService,
   ) { }
 
-  /** Whether the number of selected elements matches the total number of rows. */
+  getPageData() {
+    return this.dataSource._pageData(this.dataSource._orderData(this.dataSource.filteredData));
+  }
+
   isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
+    const numRows = this.getPageData().length;
+
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     if (this.isAllSelected()) {
       this.selection.clear();
       return;
     }
 
-    this.selection.select(...this.dataSource.data);
+    this.getPageData().forEach(row => this.selection.select(row));
+    // this.selection.select(...this.dataSource.data);
   }
 
-  /** The label for the checkbox on the passed row */
   checkboxLabel(row?: User): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Id + 1}`;
+  }
+
+  handlePage(event: any) {
+    this.selection.clear();
   }
 
   // 取得 user 列表
@@ -80,6 +87,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.filter$.pipe(
       debounceTime(500)
     ).subscribe(p => {
+      this.selection.clear();
       this.dataSource.filter = p;
     });
   }

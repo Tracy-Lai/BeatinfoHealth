@@ -2,13 +2,6 @@
 
 table {
   width: 100%;
-
-  tbody {
-
-    tr:hover {
-      background-color: $gray10;
-    }
-  }
 }
 
 svg {
@@ -25,32 +18,8 @@ a {
 
 .listContainer {
 
-  padding : 20px 30px;
-  display : block;
-
-  header {
-    display    : flex;
-    padding    : 0.75rem 1.125rem;
-    align-items: center;
-
-    h1 {
-      font-size   : 1.125rem;
-      margin-right: 3.75rem;
-    }
-
-    span {
-      font-size: 0.875rem;
-      color    : $gray50;
-
-      &+span {
-        margin-left: 1.625rem;
-      }
-    }
-
-    .search {
-      margin-left: auto;
-    }
-  }
+  padding: 20px 30px;
+  display: block;
 
   .table-container {
     min-width: 100%;

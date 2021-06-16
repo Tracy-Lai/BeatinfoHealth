@@ -1,13 +1,13 @@
-<div class="new-organization">
+<div class="new-organization mt-3 ms-3">
   <button mat-stroked-button color="primary" class="new-organization-button">
     新增組織
   </button>
 </div>
-<div class="app">
+<div class="app mb-3">
   <div class="wrapper">
     <ng-container *ngFor="let organization of organizations">
       <a (click)="chooseOrganization(organization.Id)" routerLink="/">
-        <mat-card class="card">
+        <mat-card class="card m-3">
           <mat-card-header>
             <mat-card-title>
               {{organization.Name}}

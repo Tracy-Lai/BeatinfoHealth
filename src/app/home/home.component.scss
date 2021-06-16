@@ -91,7 +91,8 @@ mat-sidenav-container {
 
   @media screen and (max-width: 920px) {
     .content {
-      height: auto;
+      min-height: calc(100vh - 165px);
+      height    : auto;
     }
   }
 }

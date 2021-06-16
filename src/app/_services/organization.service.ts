@@ -46,7 +46,7 @@ export class OrganizationService {
     }
   }
 
-  // 取得服務組織清單 (user 依權限取得資料)
+  // 取得服務組織清單 (依權限取得資料)
   fetchOrganization(id: string) {
     return this.http.get<Organization[]>('/Organization', {
       params: {
@@ -56,21 +56,7 @@ export class OrganizationService {
       retry(2),
       map((data: any) => {
         // TODO:: 移除假資料
-        data.Data = [{ Id: '1', Name: '組織 1', ServiceId: '1' }, { Id: '2', Name: '組織 2', ServiceId: '1' }];
-        return data.Data;
-      }),
-    );
-  }
-
-  // 取得服務所有組織清單 (admin)
-  fetchOrganizationAll(id: string) {
-    return this.http.get<any>('/Organization/All', {
-      params: {
-        service_id: id,
-      },
-    }).pipe(
-      retry(2),
-      map((data: any) => {
+        data.Data = [{ Id: '1', Name: '組織 1', ServiceId: '1' }, { Id: '2', Name: '組織 2', ServiceId: '1' }, { Id: '3', Name: '組織 3', ServiceId: '1' }];
         return data.Data;
       }),
     );

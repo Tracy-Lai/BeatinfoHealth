@@ -4,17 +4,11 @@
   display: block;
 }
 
-.new-organization {
-  margin: 20px;
-}
-
 .app {
   display        : flex;
   align-items    : center;
   justify-content: center;
   flex-direction : column;
-  padding-top    : 10px;
-  margin-bottom  : 30px;
 
   .wrapper {
     display        : flex;
@@ -27,7 +21,6 @@
     box-shadow   : rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
     min-width    : 298px;
     min-height   : 200px;
-    margin       : 20px 20px;
     border-radius: 2px;
     transition   : .15s all ease-in-out;
 
