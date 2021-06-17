@@ -27,7 +27,6 @@ export interface User {
   CreateUser: string;
   UpdateDateTime: string;
   UpdateUser: string;
-
   ValidFlag: boolean;
   /*
   // 頭像

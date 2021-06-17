@@ -5,31 +5,29 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-
+// model
+import { Group } from '../../_models/group';
 // service
 import { MenuService } from 'src/app/_services/menu.service';
-import { AdminService } from 'src/app/_services/admin.service';
-
-import { Admin } from '../../_models/admin';
+import { GroupService } from 'src/app/_services/group.service';
 
 @Component({
-  selector: 'app-admins',
-  templateUrl: './admins.component.html',
-  styleUrls: ['./admins.component.scss']
+  selector: 'app-groups',
+  templateUrl: './groups.component.html',
+  styleUrls: ['./groups.component.scss']
 })
-export class AdminsComponent implements OnInit, AfterViewInit {
-
-  dataSource = new MatTableDataSource<Admin>();
-  displayedColumns = ['select', 'icons', 'Name'];
+export class GroupsComponent implements OnInit, AfterViewInit {
+  dataSource = new MatTableDataSource<Group>();
+  displayedColumns = ['select', 'icons', 'Name', 'UserCount', 'ProCount'];
 
   filter$ = new Subject<string>();
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-  selection = new SelectionModel<Admin>(true, []);
+  selection = new SelectionModel<Group>(true, []);
 
   constructor(
     private menuService: MenuService,
-    private adminService: AdminService,
+    private groupService: GroupService,
   ) { }
 
   getPageData() {
@@ -53,7 +51,7 @@ export class AdminsComponent implements OnInit, AfterViewInit {
     // this.selection.select(...this.dataSource.data);
   }
 
-  checkboxLabel(row?: Admin): string {
+  checkboxLabel(row?: Group): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
@@ -64,9 +62,9 @@ export class AdminsComponent implements OnInit, AfterViewInit {
     this.selection.clear();
   }
 
-  // 取得 admin 列表
-  fetchAuthorityOrganizationList() {
-    this.adminService.fetchAuthorityOrganization().subscribe(res => {
+  // 取得 group 列表
+  fetchGroupList() {
+    this.groupService.fetchGroup().subscribe(res => {
       if (!!res) {
         this.dataSource.data = res;
       }
@@ -85,10 +83,10 @@ export class AdminsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     // menu
     this.menuService.changeMenu('Mangement');
-    // TODO:Breadcrumb - Admin
+    // TODO:Breadcrumb - Group
 
-    // admins
-    this.fetchAuthorityOrganizationList();
+    // groups
+    this.fetchGroupList();
 
     // filter
     this.filter$.pipe(

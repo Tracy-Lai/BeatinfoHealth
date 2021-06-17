@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// model
-import { Routing } from 'src/app/_models/routing.enum';
 // component
 import { OrganizationsComponent } from './organizations.component';
 

@@ -1,0 +1,21 @@
+@import '../../../styles/colors';
+
+:host {
+  display: inline-block;
+
+  &.inactive-icon {
+    path {
+      fill: $gray50;
+    }
+  }
+
+  path {
+    fill: $black;
+  }
+
+  &.white {
+    path {
+      fill: $white;
+    }
+  }
+}

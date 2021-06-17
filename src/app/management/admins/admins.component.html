@@ -1,1 +1,93 @@
-<p>admins works!</p>
+<!-- container -->
+<div class="listContainer">
+
+  <div class="row">
+    <div class="col-12">
+      <span class="title">管理者列表</span>
+    </div>
+  </div>
+
+  <!-- 維護 -->
+  <div class="row mt-3">
+    <div class="col">
+      <app-add-icon (click)="onClickAdd()"></app-add-icon>
+      <app-delete-icon (click)="onClickDelete()"></app-delete-icon>
+    </div>
+  </div>
+
+  <!-- 搜尋 -->
+  <div class="row filterBar">
+    <div class="col-12">
+      <mat-form-field>
+        <mat-label>關鍵字</mat-label>
+        <input matInput placeholder="關鍵字" [ngModel]="filter$ | async" (ngModelChange)="filter$.next($event)">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row mb-2">
+    <div class="col">
+      <small>
+        共 {{paginator.length}} 項
+        <ng-container *ngIf="selection.selected.length > 0">
+          ( 已勾選 {{selection.selected.length}} 項 )
+        </ng-container>
+      </small>
+    </div>
+  </div>
+
+  <!-- table -->
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- checkbox -->
+      <ng-container matColumnDef="select">
+        <!-- 全選 -->
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <!-- 單選 -->
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation();" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- icons -->
+      <ng-container matColumnDef="icons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let group" class="icons">
+        </td>
+      </ng-container>
+
+      <!-- Name -->
+      <ng-container matColumnDef="Name" sticky>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>名稱</th>
+        <td mat-cell *matCellDef="let admin">
+          <a [routerLink]="[admin.Id]">
+            {{ admin.Name }}
+          </a>
+        </td>
+      </ng-container>
+
+      <!-- row -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{highlighted: selection.isSelected(row)}">
+      </tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell text-center" colspan="9999">
+          無資料
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- pagination -->
+  <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons (page)="handlePage($event)">
+  </mat-paginator>
+
+</div>

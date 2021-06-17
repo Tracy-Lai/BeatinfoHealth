@@ -19,8 +19,8 @@ $custom-theme  : mat-light-theme($custom-primary, $custom-accent, $custom-warn);
 
 .mat-table,
 .mat-paginator {
-  background      : transparent !important;
-  background-color: transparent !important;
+  background      : #fafafa;
+  background-color: #fafafa;
 }
 
 .mat-table {

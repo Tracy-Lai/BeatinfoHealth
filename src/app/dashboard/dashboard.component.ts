@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.menuService.changeMenu('Home');
 
     // Breadcrumb
-    this.breadService.changeBreadcrumb([]);
+    //this.breadService.changeBreadcrumb([]);
   }
 
   ngOnDestroy() {

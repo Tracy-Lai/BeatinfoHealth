@@ -23,6 +23,7 @@ import { MatMenuModule } from '@angular/material/menu';
 // icon
 import { AccountCircleIconComponent } from './account-circle-icon/account-circle-icon.component';
 import { AddIconComponent } from './add-icon/add-icon.component';
+import { DeleteIconComponent } from './delete-icon/delete-icon.component';
 import { LogoIconComponent } from './logo-icon/logo-icon.component';
 import { HomeIconComponent } from './home-icon/home-icon.component';
 import { UserIconComponent } from './user-icon/user-icon.component';
@@ -42,6 +43,7 @@ import { ManagementIconComponent } from './management-icon/management-icon.compo
   declarations: [
     AccountCircleIconComponent,
     AddIconComponent,
+    DeleteIconComponent,
     LogoIconComponent,
     HomeIconComponent,
     UserIconComponent,
@@ -61,6 +63,7 @@ import { ManagementIconComponent } from './management-icon/management-icon.compo
     // icons
     AccountCircleIconComponent,
     AddIconComponent,
+    DeleteIconComponent,
     LogoIconComponent,
     HomeIconComponent,
     UserIconComponent,

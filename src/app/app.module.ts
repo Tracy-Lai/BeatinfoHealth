@@ -9,9 +9,9 @@ import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+// auth
 import { AuthInterceptor } from './_helpers/auth.interceptor';
-
+// env
 import { environment } from 'src/environments/environment';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {

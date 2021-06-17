@@ -5,15 +5,13 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-
 // model
-import { Routing } from '../../_models/routing.enum';
+import { RoutingBreadcrumb } from '../../_models/routing.enum';
 import { User } from '../../_models/user';
-
 // service
 import { BreadcrumbService } from '../../_services/breadcrumb.service';
-import { UserService } from '../../_services/user.service';
 import { MenuService } from 'src/app/_services/menu.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -22,7 +20,7 @@ import { MenuService } from 'src/app/_services/menu.service';
 })
 export class UsersComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<User>();
-  displayedColumns = ['select', 'icons', 'Name', 'PhoneNumber', 'Mail'];
+  displayedColumns = ['select', 'icons', 'Name', 'PhoneNumber', 'Mail', 'Birthday', 'Gender', 'Height', 'Weight', 'ContactPerson', 'ContactPhone'];
 
   filter$ = new Subject<string>();
   @ViewChild(MatSort) sort!: MatSort;
@@ -30,9 +28,9 @@ export class UsersComponent implements OnInit, AfterViewInit {
   selection = new SelectionModel<User>(true, []);
 
   constructor(
-    private userService: UserService,
-    private menuService: MenuService,
     private breadService: BreadcrumbService,
+    private menuService: MenuService,
+    private userService: UserService,
   ) { }
 
   getPageData() {
@@ -70,15 +68,17 @@ export class UsersComponent implements OnInit, AfterViewInit {
   // 取得 user 列表
   fetchUserList() {
     this.userService.fetchUserAll().subscribe(res => {
-      this.dataSource.data = res;
+      if (!!res) {
+        this.dataSource.data = res;
+      }
     });
   }
 
   ngOnInit(): void {
     // menu
     this.menuService.changeMenu('Mangement');
-    // Breadcrumb - User
-    this.breadService.changeBreadcrumb([Routing.Users]);
+    // TODO:Breadcrumb - User
+    //this.breadService.changeBreadcrumb(['Users']);
 
     // users
     this.fetchUserList();

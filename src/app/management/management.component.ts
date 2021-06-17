@@ -19,8 +19,8 @@ export class ManagementComponent implements OnInit {
   ngOnInit(): void {
     // menu
     this.menuService.changeMenu('Mangement');
-    // Breadcrumb - User
-    this.breadService.changeBreadcrumb([Routing.Management]);
+    // Breadcrumb - Management
+    // this.breadService.changeBreadcrumb([Routing.Management]);
   }
 
 }

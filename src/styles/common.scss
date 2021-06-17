@@ -11,12 +11,38 @@ svg {
 a {
   color: $black;
 
+  &:hover {
+    color          : $blue50;
+    text-decoration: underline;
+  }
+
   &:active {
     color: $black;
   }
 }
 
+.fit-content {
+  min-width: 1px;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
 .listContainer {
+
+  .title {
+    font-size  : 18px;
+    font-weight: 300;
+  }
 
   padding: 20px 30px;
   display: block;
@@ -41,6 +67,14 @@ a {
   }
 }
 
+.filterBar {
+  // background   : $gray20;
+  padding         : 7px;
+  // border-radius: 4px;
+  margin-top      : 9px;
+  margin-bottom   : 9px;
+}
+
 .icon {
   vertical-align: bottom;
 
@@ -49,12 +83,15 @@ a {
   }
 }
 
-// .button-icon {
-//   cursor: pointer;
-//   background-color: $gray80;
-//   border-radius: 6px;
-//   padding: 0.375rem;
-// }
+.button-icon {
+  cursor       : pointer;
+  border-radius: 6px;
+  padding      : 0.35rem;
+
+  &:hover {
+    background-color: $gray20;
+  }
+}
 
 // .white-background-icon {
 //   cursor: pointer;
@@ -64,13 +101,13 @@ a {
 //   margin-right: 0.75rem;
 // }
 
-// .inactive-icon {
-//   cursor: not-allowed;
+.inactive-icon {
+  cursor: not-allowed;
 
-//   svg {
-//     pointer-events: none;
-//   }
-// }
+  svg {
+    pointer-events: none;
+  }
+}
 
 // .small-icon {
 //   svg {

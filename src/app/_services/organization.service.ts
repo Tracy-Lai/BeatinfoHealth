@@ -47,10 +47,10 @@ export class OrganizationService {
   }
 
   // 取得服務組織清單 (依權限取得資料)
-  fetchOrganization(id: string) {
+  fetchOrganization(service_id: string) {
     return this.http.get<Organization[]>('/Organization', {
       params: {
-        service_id: id,
+        service_id: service_id,
       },
     }).pipe(
       retry(2),

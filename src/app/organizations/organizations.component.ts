@@ -41,7 +41,7 @@ export class OrganizationsComponent implements OnInit {
     // menu
     this.menuService.changeMenu('Organization');
     // Breadcrumb - Organizations
-    this.breadService.changeBreadcrumb([Routing.Organizations], false);
+    //this.breadService.changeBreadcrumb([Routing.Organizations], false);
 
     this.organizationService.removeOrganizationId();
 

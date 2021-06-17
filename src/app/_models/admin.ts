@@ -1,7 +1,8 @@
-export interface Organization {
-  Id: string;
-  ServiceId: string;
-  Name: string;
+export interface Admin {
+  Id: number,
+  Code: string,
+  Name: string,
+  Type: string,
   // 資料建立時間
   // example: 2012-12-12 12:12:12
   CreateDateTime: string;

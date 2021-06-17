@@ -3,12 +3,20 @@
 
   <div class="row">
     <div class="col-12">
-      <span class="title">使用者列表</span>
+      <span class="title">群組列表</span>
+    </div>
+  </div>
+
+  <!-- 維護 -->
+  <div class="row mt-3">
+    <div class="col">
+      <app-add-icon (click)="onClickAdd()"></app-add-icon>
+      <app-delete-icon (click)="onClickDelete()"></app-delete-icon>
     </div>
   </div>
 
   <!-- 搜尋 -->
-  <div class="row mt-2">
+  <div class="row filterBar">
     <div class="col-12">
       <mat-form-field>
         <mat-label>關鍵字</mat-label>
@@ -51,81 +59,33 @@
       <!-- icons -->
       <ng-container matColumnDef="icons">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let user" class="icons">
+        <td mat-cell *matCellDef="let group" class="icons">
         </td>
       </ng-container>
 
-      <!-- 名稱 Name -->
+      <!-- Name -->
       <ng-container matColumnDef="Name" sticky>
         <th mat-header-cell *matHeaderCellDef mat-sort-header>名稱</th>
-        <td mat-cell *matCellDef="let user">
-          <a [routerLink]="[user.UserId]">
-            {{ user.Name }}
+        <td mat-cell *matCellDef="let group">
+          <a [routerLink]="[group.Id]">
+            {{ group.Name }}
           </a>
         </td>
       </ng-container>
 
-      <!-- 電話 Phone -->
-      <ng-container matColumnDef="PhoneNumber">
-        <th mat-header-cell *matHeaderCellDef>電話</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.PhoneNumber }}
+      <!-- UserCount -->
+      <ng-container matColumnDef="UserCount" sticky>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>使用者</th>
+        <td mat-cell *matCellDef="let group">
+          0
         </td>
       </ng-container>
 
-      <!-- 信箱 Mail -->
-      <ng-container matColumnDef="Mail">
-        <th mat-header-cell *matHeaderCellDef>信箱</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.Mail }}
-        </td>
-      </ng-container>
-
-      <!-- 生日 Birthday -->
-      <ng-container matColumnDef="Birthday">
-        <th mat-header-cell *matHeaderCellDef>生日</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.Birthday }}
-        </td>
-      </ng-container>
-
-      <!-- 性別 Gender -->
-      <ng-container matColumnDef="Gender">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>性別</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.Gender | gender }}
-        </td>
-      </ng-container>
-
-      <!-- 身高 Height -->
-      <ng-container matColumnDef="Height">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>身高</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.Height }} cm
-        </td>
-      </ng-container>
-
-      <!-- 體重 Weight -->
-      <ng-container matColumnDef="Weight">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>體重</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.Weight }} kg
-        </td>
-      </ng-container>
-
-      <!-- 緊急聯絡人 ContactPerson -->
-      <ng-container matColumnDef="ContactPerson">
-        <th mat-header-cell *matHeaderCellDef>緊急聯絡人</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.ContactPerson }}
-        </td>
-      </ng-container>
-
-      <!-- 緊急連絡人電話 ContactPhone -->
-      <ng-container matColumnDef="ContactPhone">
-        <th mat-header-cell *matHeaderCellDef>緊急連絡人電話</th>
-        <td mat-cell *matCellDef="let user">
-          {{ user.ContactPhone }}
+      <!-- ProCount -->
+      <ng-container matColumnDef="ProCount" sticky>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>監控者</th>
+        <td mat-cell *matCellDef="let group">
+          0
         </td>
       </ng-container>
 

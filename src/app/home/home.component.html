@@ -35,7 +35,6 @@
 <!-- Container -->
 <mat-sidenav-container>
 
-
   <!-- SideNav -->
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
@@ -44,7 +43,12 @@
       <span>主頁</span>
     </a> -->
     <ng-container *ngFor="let menu of menu$ | async">
-      <a mat-button [routerLink]="menu.Path">
+      <a *ngIf="menu.Path != '/'" mat-button [routerLink]="menu.Path" routerLinkActive
+        #routerLinkActiveInstance="routerLinkActive" [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+        [class.list-item-active]="routerLinkActiveInstance.isActive">
+        <span>{{menu.Name}}</span>
+      </a>
+      <a *ngIf="menu.Path == '/'" mat-button [routerLink]="menu.Path">
         <span>{{menu.Name}}</span>
       </a>
     </ng-container>
@@ -53,8 +57,8 @@
 
   <!-- Content -->
   <mat-sidenav-content>
-    <!-- breadcrumb -->
-    <app-breadcrumb></app-breadcrumb>
+    <!-- TODO:breadcrumb -->
+    <!-- <app-breadcrumb></app-breadcrumb> -->
     <!-- Card content -->
     <div class="content mat-elevation-z8">
       <router-outlet></router-outlet>
