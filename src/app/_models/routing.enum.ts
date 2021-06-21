@@ -10,7 +10,7 @@ export enum Routing {
   Admins = 'admins',
   Groups = 'groups',
 
-  Activity = 'activity',
+  Activitys = 'activitys',
 }
 
 export const RoutingBreadcrumb: any[] = [
@@ -52,7 +52,7 @@ export const RoutingBreadcrumb: any[] = [
   {
     routing: 'Activity',
     text: '生理資訊',
-    link: 'activity',
+    link: 'activitys',
   },
 ];
 

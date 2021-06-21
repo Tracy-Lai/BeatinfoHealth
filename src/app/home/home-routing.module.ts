@@ -1,4 +1,3 @@
-import { OrganizationsModule } from './../organizations/organizations.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // guard
@@ -25,6 +24,11 @@ const routes: Routes = [
       {
         path: Routing.Management,
         loadChildren: () => import('../management/management.module').then((m) => m.ManagementModule),
+        canActivate: [OrganizationGuard],
+      },
+      {
+        path: Routing.Activitys,
+        loadChildren: () => import('../activitys/activitys.module').then((m) => m.ActivitysModule),
         canActivate: [OrganizationGuard],
       },
     ],

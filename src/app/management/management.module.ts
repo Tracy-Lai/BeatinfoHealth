@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ManagementsRoutingModule } from './management-routing.module';
+import { ManagementRoutingModule } from './management-routing.module';
 import { ManagementComponent } from './management.component';
 import { AdminsComponent } from './admins/admins.component';
 import { GroupsComponent } from './groups/groups.component';
@@ -21,7 +21,7 @@ import { ShareModule } from '../_share/share.module';
     GroupDialogComponent,
   ],
   imports: [
-    ManagementsRoutingModule,
+    ManagementRoutingModule,
     ShareModule,
   ]
 })

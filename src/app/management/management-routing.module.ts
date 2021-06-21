@@ -40,4 +40,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 
-export class ManagementsRoutingModule { }
+export class ManagementRoutingModule { }
