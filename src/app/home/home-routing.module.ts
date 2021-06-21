@@ -18,20 +18,15 @@ const routes: Routes = [
         loadChildren: () => import('../organizations/organizations.module').then((m) => m.OrganizationsModule),
       },
       {
-        path: Routing.Management,
-        loadChildren: () => import('../management/management.module').then((m) => m.ManagementModule),
-        canActivate: [OrganizationGuard],
-      },
-      {
         path: '',
         loadChildren: () => import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
         canActivate: [OrganizationGuard],
       },
-      // {
-      //   path: Routing.Users,
-      //   loadChildren: () => import('../management/users/users.module').then((m) => m.UsersModule),
-      //   canActivate: [OrganizationGuard],
-      // },
+      {
+        path: Routing.Management,
+        loadChildren: () => import('../management/management.module').then((m) => m.ManagementModule),
+        canActivate: [OrganizationGuard],
+      },
     ],
   },
   // otherwise redirect to Organizations

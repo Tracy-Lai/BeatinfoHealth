@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+import { Menu } from '../_models/menu';
 // 模擬資料
 import { Menus, MangementMenus } from '../_services/mock/menus';
 
@@ -9,10 +10,8 @@ import { Menus, MangementMenus } from '../_services/mock/menus';
 })
 export class MenuService {
 
-  private defaultMenu = Menus;
   // private _menu$ = Menus;
-  private _menu$ = new BehaviorSubject(this.defaultMenu);
-
+  private _menu$ = new BehaviorSubject<Menu[] | null>(null);
 
   constructor(
   ) { }
@@ -29,7 +28,7 @@ export class MenuService {
     if (menu == 'Mangement') {
       this._menu$.next(MangementMenus);
     } else {
-      this._menu$.next(Menus);
+      this._menu$.next(null);
     }
   }
 }

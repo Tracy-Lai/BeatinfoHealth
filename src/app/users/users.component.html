@@ -1,0 +1,155 @@
+<div class="pt-3 ps-3">
+  <a mat-stroked-button routerLink="/organizations">
+    返回
+  </a>
+</div>
+
+<!-- container -->
+<div class="content mat-elevation-z8 m-3">
+
+  <div class="row">
+    <div class="col-12">
+      <span class="title">所有使用者列表</span>
+    </div>
+  </div>
+
+  <!-- 搜尋 -->
+  <div class="row mt-2">
+    <div class="col-12">
+      <mat-form-field>
+        <mat-label>關鍵字</mat-label>
+        <input matInput placeholder="關鍵字" [ngModel]="filter$ | async" (ngModelChange)="filter$.next($event)">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col">
+      <small>
+        共 {{paginator.length}} 項
+        <ng-container *ngIf="selection.selected.length > 0">
+          ( 已勾選 {{selection.selected.length}} 項 )
+        </ng-container>
+      </small>
+    </div>
+  </div>
+
+  <!-- table -->
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- checkbox -->
+      <ng-container matColumnDef="select">
+        <!-- 全選 -->
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <!-- 單選 -->
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation();" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- icons -->
+      <ng-container matColumnDef="icons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let user" class="icons">
+        </td>
+      </ng-container>
+
+      <!-- 名稱 Name -->
+      <ng-container matColumnDef="Name" sticky>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>名稱</th>
+        <td mat-cell *matCellDef="let user">
+          <a (click)="onClickUserDetail(user.UserId)">
+            {{ user.Name }}
+          </a>
+        </td>
+      </ng-container>
+
+      <!-- 電話 Phone -->
+      <ng-container matColumnDef="PhoneNumber">
+        <th mat-header-cell *matHeaderCellDef>電話</th>
+        <td mat-cell *matCellDef="let user">
+          {{ user.PhoneNumber }}
+        </td>
+      </ng-container>
+
+      <!-- 信箱 Mail -->
+      <ng-container matColumnDef="Mail">
+        <th mat-header-cell *matHeaderCellDef>信箱</th>
+        <td mat-cell *matCellDef="let user">
+          {{ user.Mail }}
+        </td>
+      </ng-container>
+
+      <!-- 生日 Birthday -->
+      <ng-container matColumnDef="Birthday">
+        <th mat-header-cell *matHeaderCellDef>生日</th>
+        <td mat-cell *matCellDef="let user">
+          {{ user.Birthday }}
+        </td>
+      </ng-container>
+
+      <!-- 性別 Gender -->
+      <ng-container matColumnDef="Gender">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>性別</th>
+        <td mat-cell *matCellDef="let user">
+          {{ user.Gender | gender }}
+        </td>
+      </ng-container>
+
+      <!-- 身高 Height -->
+      <ng-container matColumnDef="Height">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>身高</th>
+        <td mat-cell *matCellDef="let user">
+          {{ user.Height }} cm
+        </td>
+      </ng-container>
+
+      <!-- 體重 Weight -->
+      <ng-container matColumnDef="Weight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>體重</th>
+        <td mat-cell *matCellDef="let user">
+          {{ user.Weight }} kg
+        </td>
+      </ng-container>
+
+      <!-- 緊急聯絡人 ContactPerson -->
+      <ng-container matColumnDef="ContactPerson">
+        <th mat-header-cell *matHeaderCellDef>緊急聯絡人</th>
+        <td mat-cell *matCellDef="let user">
+          {{ user.ContactPerson }}
+        </td>
+      </ng-container>
+
+      <!-- 緊急連絡人電話 ContactPhone -->
+      <ng-container matColumnDef="ContactPhone">
+        <th mat-header-cell *matHeaderCellDef>緊急連絡人電話</th>
+        <td mat-cell *matCellDef="let user">
+          {{ user.ContactPhone }}
+        </td>
+      </ng-container>
+
+      <!-- row -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{highlighted: selection.isSelected(row)}">
+      </tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell text-center" colspan="9999">
+          無資料
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- pagination -->
+  <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons (page)="handlePage($event)">
+  </mat-paginator>
+
+</div>

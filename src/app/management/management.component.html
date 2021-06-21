@@ -1,1 +1,31 @@
-<p>management works!</p>
+<!-- Container -->
+<mat-sidenav-container>
+  <!-- SideNav -->
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" opened mode="side">
+    <ng-container *ngFor="let menu of menu$ | async">
+      <a *ngIf="menu.Path != '/'" mat-button [routerLink]="menu.Path" routerLinkActive
+        #routerLinkActiveInstance="routerLinkActive" [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+        [class.list-item-active]="routerLinkActiveInstance.isActive" (click)="clickSidenav()">
+        <span>{{menu.Name}}</span>
+      </a>
+      <a *ngIf="menu.Path == '/'" mat-button [routerLink]="menu.Path">
+        <span>{{menu.Name}}</span>
+      </a>
+    </ng-container>
+    <!-- <mat-divider></mat-divider> -->
+  </mat-sidenav>
+
+  <!-- Content -->
+  <mat-sidenav-content>
+
+  <button class="sidenavBtn" mat-button (click)="sidenav.toggle()">
+    <app-menu-icon class="" *ngIf="!sidenav.opened"></app-menu-icon>
+    <app-menu-close-icon class="" *ngIf="sidenav.opened"></app-menu-close-icon>
+  </button>
+
+    <!-- TODO:breadcrumb -->
+    <!-- <app-breadcrumb></app-breadcrumb> -->
+    <!-- Card content -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

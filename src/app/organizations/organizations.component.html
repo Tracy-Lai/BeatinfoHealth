@@ -1,26 +1,37 @@
-<div class="new-organization pt-3 ps-3">
-  <button mat-stroked-button color="primary" class="new-organization-button">
+<div class="pt-3 ps-3">
+  <button mat-stroked-button color="primary" class="new-organization-button" (click)="onClickCreate()">
     新增組織
   </button>
+  <a mat-stroked-button routerLink="/organizations/users">
+    所有使用者
+  </a>
 </div>
-<div class="app mb-3">
+<div class="app my-3">
   <div class="wrapper">
     <ng-container *ngFor="let organization of organizations">
-      <a (click)="chooseOrganization(organization.Id)" routerLink="/">
-        <mat-card class="card m-3">
-          <mat-card-header>
-            <mat-card-title>
+      <mat-card class="card m-3">
+        <mat-card-header>
+          <mat-card-title>
+            <a (click)="chooseOrganization(organization.Id)" routerLink="/">
               {{organization.Name}}
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-          </mat-card-content>
-        </mat-card>
-      </a>
+            </a>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="button">
+            <button mat-flat-button color="primary" (click)="onClickUpdate(organization)">
+              編輯
+            </button>
+            <button mat-flat-button color="warn" (click)="onClickDelete(organization)">
+              刪除
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </ng-container>
 
     <ng-container *ngIf="!organizations">
-        無組織
+      <div class="my-3">無組織</div>
     </ng-container>
   </div>
 </div>

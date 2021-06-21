@@ -4,23 +4,53 @@
 @include mat-core();
 // $custom-primary: mat-palette($mat-light-blue);
 // $custom-accent:  mat-palette($mat-orange, 500, A100, A700);
-/* 500是預設值，也可以忽略 */
+
+$mat-red: (50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: $alert_error,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ));
+
 $custom-primary: mat-palette($mat-light-blue, 700);
 $custom-accent : mat-palette($mat-gray, 700);
-$custom-warn   : mat-palette($mat-brown);
+$custom-warn   : mat-palette($mat-red);
 /* 建立深色主題 */
 $custom-theme  : mat-light-theme($custom-primary, $custom-accent, $custom-warn);
 
 @include angular-material-theme($custom-theme);
 
-.mat-form-field {
-  width: 100%;
+a.mat-stroked-button:hover,
+a.mat-raised-button:hover {
+  color          : $blue50;
+  text-decoration: none;
 }
 
-.mat-table,
-.mat-paginator {
-  background      : #fafafa;
-  background-color: #fafafa;
+.mat-form-field {
+  width: 100%;
 }
 
 .mat-table {
@@ -39,4 +69,111 @@ $custom-theme  : mat-light-theme($custom-primary, $custom-accent, $custom-warn);
       background-color: $gray20;
     }
   }
+}
+
+.mat-sidenav-container {
+  height          : calc(100vh - 90px);
+  background-color: transparent !important;
+
+  .sidenavBtn {
+    margin-top : 16px;
+    margin-left: 32px;
+  }
+}
+
+.content {
+  // height       : calc(100vh - 165px); 先關閉麵包屑
+  // min-height      : auto;
+  // overflow     : auto;
+  border-radius: 10px;
+  margin       : 16px;
+  margin-left  : 32px;
+
+  .title {
+    font-size  : 18px;
+    font-weight: 300;
+  }
+
+  padding: 20px 30px;
+  display: block;
+
+  .table-container {
+    min-width: 100%;
+    max-width: 100%;
+    overflow : auto;
+
+    @media screen and (max-width: 921px) {
+      td.mat-column-star {
+        width        : 20px;
+        padding-right: 8px;
+      }
+
+      th.mat-header-cell,
+      td.mat-cell {
+        padding-left : 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 920px) {
+
+  .mat-sidenav-container,
+  .content {
+    height: auto;
+  }
+}
+
+.mat-sidenav {
+  margin          : 16px;
+  width           : 200px;
+  // max-height   : calc(100vh - 90px);
+  background      : $gray70;
+  color           : $white;
+  border-radius   : 10px;
+  padding         : 16px;
+
+  a {
+    color: $white;
+
+    &:hover {
+      color          : $white;
+      text-decoration: none;
+    }
+
+    &:active {
+      color: $white;
+    }
+  }
+
+  .mat-button {
+    width     : 100%;
+    text-align: left;
+
+    &:hover {
+      background: $gray60;
+    }
+  }
+
+  .list-item-active {
+    background: $gray60;
+  }
+
+  span {
+    padding-left: 10px;
+  }
+}
+
+// snazkbar
+.green-snackbar {
+  background: $alert_success;
+}
+
+.red-snackbar {
+  background: $alert_error;
+}
+
+.warning-snackbar {
+  background: $alert_warning;
 }

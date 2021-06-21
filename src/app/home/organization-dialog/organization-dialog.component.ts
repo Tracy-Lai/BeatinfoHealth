@@ -34,6 +34,7 @@ export class OrganizationDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dialogRef.updateSize('450px');
     this.fetchOrganizationList();
   }
 

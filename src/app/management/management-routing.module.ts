@@ -11,11 +11,28 @@ import { UserShowComponent } from './users/user-show/user-show.component';
 import { GroupsComponent } from './groups/groups.component';
 
 const routes: Routes = [
-  { path: '', component: ManagementComponent, },
-  { path: Routing.Users, component: UsersComponent, },
-  { path: Routing.User_Show, component: UserShowComponent, },
-  { path: Routing.Admins, component: AdminsComponent, },
-  { path: Routing.Groups, component: GroupsComponent, },
+  {
+    path: '',
+    component: ManagementComponent,
+    children: [
+      {
+        path: Routing.Admins,
+        component: AdminsComponent,
+      },
+      {
+        path: Routing.Groups,
+        component: GroupsComponent,
+      },
+      {
+        path: Routing.Users,
+        component: UsersComponent,
+      },
+      {
+        path: Routing.User_Show,
+        component: UserShowComponent,
+      },
+    ]
+  },
 ];
 
 @NgModule({

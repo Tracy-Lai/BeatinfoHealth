@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { retry, map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
-import { Organization } from '../_models/organization';
+import { Organization, OrganizationDialog } from '../_models/organization';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,8 @@ export class OrganizationService {
     return this._filterOrganization$.asObservable();
   }
 
-  setOrganizationId(id: string) {
-    localStorage.setItem('OrganizationId', id);
+  setOrganizationId(id: number) {
+    localStorage.setItem('OrganizationId', String(id));
     this.changeFilterOrganization();
   }
 
@@ -33,7 +33,7 @@ export class OrganizationService {
   }
 
   changeFilterOrganization() {
-    const Id = this.getOrganizationId();
+    const Id = Number(this.getOrganizationId());
     this._filterOrganization$.next('選擇組織');
     if (!!Id) {
       this.fetchOrganization('1').subscribe(res => {
@@ -58,6 +58,45 @@ export class OrganizationService {
         // TODO:: 移除假資料
         data.Data = [{ Id: '1', Name: '組織 1', ServiceId: '1' }, { Id: '2', Name: '組織 2', ServiceId: '1' }, { Id: '3', Name: '組織 3', ServiceId: '1' }];
         return data.Data;
+      }),
+    );
+  }
+
+  // 新增服務群組清單
+  createOrganization(data: OrganizationDialog) {
+    return this.http.post('/Organization/Create', {
+      Id: 0,
+      Name: data.Name,
+      ServiceId: 1,
+    }).pipe(
+      map((data: any) => {
+        return data;
+      }),
+    );
+  }
+
+  // 更新服務群組清單
+  updateOrganization(id: number, data: OrganizationDialog) {
+    return this.http.post('/Organization/Update', {
+      Id: id,
+      Name: data.Name,
+      ServiceId: 1,
+    }).pipe(
+      map((data: any) => {
+        return data;
+      }),
+    );
+  }
+
+  // 刪除服務群組清單
+  deleteOrganization(id: number, data: OrganizationDialog) {
+    return this.http.post('/Organization/Delete', {
+      Id: id,
+      Name: data.Name,
+      ServiceId: 1,
+    }).pipe(
+      map((data: any) => {
+        return data;
       }),
     );
   }

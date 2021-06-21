@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{isCreate ? '建立新群組' : '修改群組資訊'}}</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field class="fullField">
+    <mat-label>群組名稱</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" cdkFocusInitial (click)="onSubmit()" [disabled]="!submitable">
+    {{isCreate ? '建立' : '儲存'}}
+  </button>
+  <button mat-raised-button (click)="onCancel()">
+    取消
+  </button>
+</mat-dialog-actions>

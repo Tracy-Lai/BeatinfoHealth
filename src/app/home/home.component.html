@@ -1,17 +1,11 @@
 <!-- Header -->
 <mat-toolbar>
-
-  <button mat-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-    <app-menu-icon class="white" *ngIf="!sidenav.opened"></app-menu-icon>
-    <app-close-icon class="white" *ngIf="sidenav.opened"></app-close-icon>
-  </button>
-
+  <!-- logo -->
   <app-header-logo></app-header-logo>
-
+  <!-- 切換組織 -->
   <button mat-button class="org" (click)="openDialogOrganization()">
     {{filterOrganization$ | async}}
   </button>
-
   <!-- TODO::Notification
     <button class="r-btn" mat-button [matMenuTriggerFor]="Notification">
     <app-notification-icon class="white"></app-notification-icon>
@@ -20,7 +14,7 @@
     <button mat-menu-item>Item 1</button>
     <button mat-menu-item>Item 2</button>
   </mat-menu> -->
-
+  <!-- 個人資訊 -->
   <button class="r-btn" mat-button [matMenuTriggerFor]="Profile">
     <app-account-circle-icon class="white"></app-account-circle-icon>
   </button>
@@ -29,48 +23,14 @@
     <mat-divider></mat-divider> -->
     <button mat-menu-item (click)="clickLogout()">登出</button>
   </mat-menu>
-
 </mat-toolbar>
 
-<!-- Container -->
-<mat-sidenav-container>
+<router-outlet></router-outlet>
 
-  <!-- SideNav -->
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-
-    <!-- <a mat-button routerLink="/">
-      <app-home-icon></app-home-icon>
-      <span>主頁</span>
-    </a> -->
-    <ng-container *ngFor="let menu of menu$ | async">
-      <a *ngIf="menu.Path != '/'" mat-button [routerLink]="menu.Path" routerLinkActive
-        #routerLinkActiveInstance="routerLinkActive" [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
-        [class.list-item-active]="routerLinkActiveInstance.isActive">
-        <span>{{menu.Name}}</span>
-      </a>
-      <a *ngIf="menu.Path == '/'" mat-button [routerLink]="menu.Path">
-        <span>{{menu.Name}}</span>
-      </a>
-    </ng-container>
-    <!-- <mat-divider></mat-divider> -->
-  </mat-sidenav>
-
-  <!-- Content -->
-  <mat-sidenav-content>
-    <!-- TODO:breadcrumb -->
-    <!-- <app-breadcrumb></app-breadcrumb> -->
-    <!-- Card content -->
-    <div class="content mat-elevation-z8">
-      <router-outlet></router-outlet>
-    </div>
-
-    <!-- footer -->
-    <footer>
-      <span>© 2021 Singular Wings - All rights reserved</span>
-    </footer>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<!-- footer -->
+<footer>
+  <span>© 2021 Singular Wings - All rights reserved</span>
+</footer>
 
 <!-- spinner -->
 <app-spinner></app-spinner>

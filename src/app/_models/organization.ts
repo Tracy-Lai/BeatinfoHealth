@@ -1,5 +1,5 @@
 export interface Organization {
-  Id: string;
+  Id: number;
   ServiceId: string;
   Name: string;
   // 資料建立時間
@@ -9,4 +9,8 @@ export interface Organization {
   UpdateDateTime: string;
   UpdateUser: string;
   ValidFlag: boolean;
+}
+
+export interface OrganizationDialog {
+  Name: string;
 }

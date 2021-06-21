@@ -2,7 +2,7 @@
 
 :host {
   display         : block;
-  background-color: $gray20;
+  // background-color: $gray20;
   min-height      : 100%;
   padding         : 0rem 0rem;
 }
@@ -27,22 +27,22 @@
     text-align : center;
     margin     : 0 0 50px 0;
     font-weight: 100;
-    font-size  : 60px;
+    font-size  : 56px;
     color      : #615DEC;
   }
 }
 
-.forgot {
-  text-align: center;
+// .forgot {
+//   text-align: center;
 
-  & a {
-    color          : #90A4AE;
-    text-decoration: none;
-    font-weight    : 300;
-    transition     : all 0.3s ease;
+//   & a {
+//     color          : #90A4AE;
+//     text-decoration: none;
+//     font-weight    : 300;
+//     transition     : all 0.3s ease;
 
-    &:hover {
-      color: #7791fa;
-    }
-  }
-}
+//     &:hover {
+//       color: #7791fa;
+//     }
+//   }
+// }

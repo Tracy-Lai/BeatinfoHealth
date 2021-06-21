@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>刪除</h2>
+<mat-dialog-content>
+  確定刪除資料 ?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" cdkFocusInitial (click)="dialogRef.close(true)">
+    確定
+  </button>
+  <button mat-raised-button (click)="dialogRef.close(false)">
+    取消
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{isCreate ? '建立新組織' : '修改組織資訊'}}</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field class="fullField">
+    <mat-label>組織名稱</mat-label>
+    <input matInput formControlName="Name">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" cdkFocusInitial (click)="onSubmit()" [disabled]="!submitable">
+    {{isCreate ? '建立' : '儲存'}}
+  </button>
+  <button mat-raised-button mat-dialog-close>
+    取消
+  </button>
+</mat-dialog-actions>

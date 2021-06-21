@@ -1,10 +1,13 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, filter } from 'rxjs/operators';
 import { SelectionModel } from '@angular/cdk/collections';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+// component
+import { GroupDialogComponent } from "./group-dialog/group-dialog.component";
 // model
 import { Group } from '../../_models/group';
 // service
@@ -26,6 +29,7 @@ export class GroupsComponent implements OnInit, AfterViewInit {
   selection = new SelectionModel<Group>(true, []);
 
   constructor(
+    private dialog: MatDialog,
     private menuService: MenuService,
     private groupService: GroupService,
   ) { }
@@ -71,13 +75,32 @@ export class GroupsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  //
+  // 新增
   onClickAdd() {
-    console.log('add');
+    this.openDialog();
   }
 
+  // 編輯
+  onClickEdit() {
+
+  }
+
+  // 刪除
   onClickDelete() {
 
+  }
+
+  private openDialog(data?: Group) {
+    const dialogRef = this.dialog.open(GroupDialogComponent, {
+      width: '450px',
+      data: data,
+    });
+
+    dialogRef.afterClosed().pipe<boolean>(
+      filter(p => !!p),
+    ).subscribe(() => {
+      this.fetchGroupList();
+    });
   }
 
   ngOnInit(): void {

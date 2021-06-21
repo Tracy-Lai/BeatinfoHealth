@@ -6,6 +6,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 // import { AgmCoreModule } from '@agm/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    MatSnackBarModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

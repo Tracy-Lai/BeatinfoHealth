@@ -1,0 +1,15 @@
+@import '../../../styles/colors';
+
+:host {
+  display: inline-block;
+
+  svg {
+    fill: $black;
+  }
+
+  &.white {
+    svg {
+      fill: $white;
+    }
+  }
+}

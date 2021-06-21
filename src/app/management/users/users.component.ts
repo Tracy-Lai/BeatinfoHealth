@@ -10,7 +10,7 @@ import { RoutingBreadcrumb } from '../../_models/routing.enum';
 import { User } from '../../_models/user';
 // service
 import { BreadcrumbService } from '../../_services/breadcrumb.service';
-import { MenuService } from 'src/app/_services/menu.service';
+import { MenuService } from '../../_services/menu.service';
 import { UserService } from '../../_services/user.service';
 
 @Component({

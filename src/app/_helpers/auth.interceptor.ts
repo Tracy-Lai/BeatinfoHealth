@@ -21,6 +21,7 @@ import { Observable, throwError, of } from 'rxjs';
 
 import { AuthService } from './../_services/auth.service';
 import { SpinnerService } from '../_share/spinner/spinner.service';
+import { SnackbarService } from '../_services/snackbar.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -32,6 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
     private http: HttpClient,
     private authService: AuthService,
     private spinnerService: SpinnerService,
+    private snackbarService: SnackbarService,
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler):
@@ -101,6 +103,10 @@ export class AuthInterceptor implements HttpInterceptor {
         take(2),
       )),
       retry(1),
+      catchError((error: HttpErrorResponse) => {
+        this.snackbarService.danger(error.error.Message);
+        return throwError(error);
+      }),
       finalize(() => {
         this.spinnerService.resetSpinner();
       })

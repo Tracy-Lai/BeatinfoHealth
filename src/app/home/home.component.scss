@@ -54,67 +54,6 @@ mat-toolbar {
   vertical-align: middle;
 }
 
-mat-sidenav {
-  margin       : 16px;
-  width        : 200px;
-  height       : auto;
-  background   : $gray70;
-  color        : $white;
-  border-radius: 10px;
-  padding      : 16px;
-
-  a {
-    color: $white;
-
-    &:hover {
-      color          : $white;
-      text-decoration: none;
-    }
-
-    &:active {
-      color: $white;
-    }
-  }
-
-  .mat-button {
-    width     : 100%;
-    text-align: left;
-
-    &:hover {
-      background: $gray60;
-    }
-  }
-
-  .list-item-active {
-    background: $gray60;
-  }
-
-  span {
-    padding-left: 10px;
-  }
-}
-
-mat-sidenav-container {
-  height: calc(100vh - 65px);
-
-  .content {
-    // height       : calc(100vh - 165px); 先關閉麵包屑
-    min-height      : calc(100vh - 125px);
-    // overflow     : auto;
-    border-radius   : 10px;
-    margin          : 16px;
-    margin-left     : 32px;
-  }
-
-
-  @media screen and (max-width: 920px) {
-    .content {
-      min-height: calc(100vh - 165px);
-      height    : auto;
-    }
-  }
-}
-
 footer {
   display        : flex;
   justify-content: center;
