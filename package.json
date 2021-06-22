@@ -25,6 +25,7 @@
     "firebaseui": "^4.8.0",
     "firebaseui-angular": "^5.1.2",
     "rxjs": "~6.6.0",
+    "socket.io-client": "^4.1.2",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },
